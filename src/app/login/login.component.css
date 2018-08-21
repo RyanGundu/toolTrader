@@ -1,0 +1,9 @@
+.login-panel {
+    background-color: lightgray;
+    padding: 50px;
+}
+
+.loginForm {
+    max-width: 500px;
+    margin: auto;
+}
