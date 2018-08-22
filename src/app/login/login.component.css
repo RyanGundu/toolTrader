@@ -24,3 +24,15 @@
 .banner-text h2{color:#fff; font-weight:600;}
 .banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
 .banner-text p{color:#fff;}
+
+
+/* Prevents carousel from changing size */
+.carousel-item {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+.carousel-item img {
+    width: 100%;
+    min-height: 510px;
+}
