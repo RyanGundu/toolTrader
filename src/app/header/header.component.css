@@ -1,0 +1,7 @@
+.navbar {
+    background: linear-gradient(to bottom, #005AA7, #33a0ff)
+}
+
+.navbar li > a {
+    font-size: 18px;
+}

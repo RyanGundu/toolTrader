@@ -5,12 +5,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfileHomeComponent } from './profile-home/profile-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent,
+    ProfileHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +22,10 @@ import { RegisterComponent } from './register/register.component';
       {
       path: 'register',
       component: RegisterComponent
+      },
+      {
+      path: 'profile-home',
+      component: ProfileHomeComponent
       },
       {
       path: '',
