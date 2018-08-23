@@ -1,27 +1,32 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="https://vignette.wikia.nocookie.net/logopedia/images/b/b1/TT_logo.png/revision/latest?cb=20140308215710" width="100" height="90" alt="">
+      <a class="navbar-brand" routerLink="/profile-home">
+        <img src="https://vignette.wikia.nocookie.net/logopedia/images/b/b1/TT_logo.png/revision/latest?cb=20140308215710" width="90" height="90" alt="">
+        
       </a>
+      <a class="header-title" routerLink="/profile-home">TOOLTRADER</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item px-4 active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" routerLink="/profile-home"><i class="fas fa fa-home"></i> Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item px-4">
-            <a class="nav-link" href="#">About</a>
+          <li class="nav-item mx-4">
+            <a class="nav-link" routerLink="/profile-home"><i class="fas fa fa-user-alt"></i> Profile</a>
           </li>
-          <li class="nav-item px-4">
-            <a class="nav-link" href="#">Services</a>
+          <li class="nav-item mx-4">
+            <a class="nav-link" routerLink="/profile-home"><i class="fas fa fa-info-circle"></i> About</a>
           </li>
-          <li class="nav-item px-4">
-            <a class="nav-link" href="#">Contact</a>
+          <li class="nav-item mx-4">
+            <a class="nav-link" routerLink="/profile-home"><i class="fas fa fa-phone"></i> Contact</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link" routerLink="/profile-home"><i class="fas fa fa-question-circle"></i> Help</a>
           </li>
         </ul>
       </div>
