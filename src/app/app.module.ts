@@ -11,6 +11,7 @@ import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { rootRouterConfig } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -27,27 +28,23 @@ import { ProfileHomeComponent } from './profile-home/profile-home.component';
     ProfileHomeComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-      {
-      path: 'register',
-      component: RegisterComponent
-      },
-      {
-      path: 'profile-home',
-      component: ProfileHomeComponent
-      },
-      {
-      path: '',
-      component: LoginComponent
-      }
-    ])
-  ],
+        BrowserModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+        AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+      ],
+  // imports: [
+  //   AngularFireModule.initializeApp(environment.firebase),
+  //   AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+  //   AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+  //   BrowserModule,
+  //   FormsModule,
+  //   ReactiveFormsModule,
+  //   RouterModule.forRoot([rootRouterConfig, {useHash: false}])
+    
+  // ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
 })
