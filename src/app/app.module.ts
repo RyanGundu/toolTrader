@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import { environment } from '../environments/environment';
 import { UserResolver } from './profile-home/profile-home.resolver';
 import { AuthGuard } from './core/auth.guard';
@@ -28,14 +29,14 @@ import { ProfileHomeComponent } from './profile-home/profile-home.component';
     ProfileHomeComponent
   ],
   imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        RouterModule.forRoot(rootRouterConfig, { useHash: false }),
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-        AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-      ],
-
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+  ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
 })

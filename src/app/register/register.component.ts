@@ -1,3 +1,6 @@
+import { AngularFirestore } from 'angularfire2/firestore';
+import { FirebaseUserModel } from './../core/user.model';
+import { UserService } from './../core/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { Router, Params  } from '@angular/router';
@@ -11,11 +14,20 @@ import { RegisterValidation } from './register-validation';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  firebaseUserModel: FirebaseUserModel = {
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: ''
+  }
+  public isValidUsername = true;
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public db: AngularFirestore,
+    private userService : UserService
   ) {
     this.createForm();
    }
@@ -25,7 +37,10 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.registerForm = this.fb.group({
+      firstName: ['', Validators.required ],
+      lastName: ['', Validators.required ],
       email: ['', Validators.required ],
+      username: ['', Validators.required ],
       password: ['',Validators.required],
       confirmPassword: ['', Validators.required]
     }, {
@@ -57,12 +72,28 @@ export class RegisterComponent implements OnInit {
     )
   }
 
+  validUsername(value) {
+    this.db.firestore.collection('user').doc(this.firebaseUserModel.username).get()
+    .then(docSnapshot => {
+      if (docSnapshot.exists) {
+      this.isValidUsername = false;
+       console.log("exists");
+      }
+      else {
+        this.tryRegister(value);
+        this.isValidUsername = true;
+        console.log("not exists");
+      }
+    });
+  }
+
   tryRegister(value){
     this.authService.doRegister(value)
     .then(res => {
       console.log(res);
       // this.errorMessage = "";
       // this.successMessage = "Your account has been created";
+      this.userService.addUser(this.firebaseUserModel);
       this.router.navigate(['/']);
     }, err => {
       console.log(err);
@@ -71,6 +102,10 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  setValidUserTrue() {
+    this.isValidUsername = true;
+  }
+  
   onSubmit() {
     console.log(this.registerForm);
   }
