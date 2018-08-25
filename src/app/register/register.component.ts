@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { Router, Params  } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { RegisterValidation } from './register-validation';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,10 @@ export class RegisterComponent implements OnInit {
   createForm() {
     this.registerForm = this.fb.group({
       email: ['', Validators.required ],
-      password: ['',Validators.required]
+      password: ['',Validators.required],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: RegisterValidation.MatchPassword // your validation method
     });
   }
 
@@ -65,6 +69,10 @@ export class RegisterComponent implements OnInit {
       // this.errorMessage = err.message;
       // this.successMessage = "";
     })
+  }
+
+  onSubmit() {
+    console.log(this.registerForm);
   }
 
 }
