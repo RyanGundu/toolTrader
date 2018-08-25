@@ -35,16 +35,7 @@ import { ProfileHomeComponent } from './profile-home/profile-home.component';
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
       ],
-  // imports: [
-  //   AngularFireModule.initializeApp(environment.firebase),
-  //   AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-  //   AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-  //   BrowserModule,
-  //   FormsModule,
-  //   ReactiveFormsModule,
-  //   RouterModule.forRoot([rootRouterConfig, {useHash: false}])
-    
-  // ],
+
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
 })
