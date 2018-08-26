@@ -21,7 +21,9 @@
     margin-top: 0;
     text-decoration: none;
 } 
-
+.header-title:hover {
+    text-decoration: none;
+} 
 
 img {
     border-radius: 50%;
