@@ -98,6 +98,7 @@ export class RegisterComponent implements OnInit {
     }
     this.validUsername(value);
   }
+  
 
   validUsername(value) {
     this.db.firestore.collection('user').doc(this.firebaseUserModel.username).get()
