@@ -84,7 +84,21 @@ export class RegisterComponent implements OnInit {
       value.confirmPassword
     ];
     let inValid = /\s/;
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     this.isError = false;
+
+    if (!mailformat.test(value.email)) { //check for valid email format
+      this.errorMessage = "Invalid Email";
+      this.isError = true;
+      return;
+    }
+
+    if (value.password.length < 6) { //password a minimum of 6 characters
+      this.errorMessage = "Password must be at least 6 characters";
+      this.isError = true;
+      return;
+    }
+
     for (let val of values) {
       if(inValid.test(val)) { //if key contains a space
         this.errorMessage = "Spaces are not allowed";
