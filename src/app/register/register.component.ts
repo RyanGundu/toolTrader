@@ -93,6 +93,7 @@ export class RegisterComponent implements OnInit {
       console.log(res);
       // this.errorMessage = "";
       // this.successMessage = "Your account has been created";
+
       this.userService.addUser(this.firebaseUserModel);
       this.router.navigate(['/']);
     }, err => {

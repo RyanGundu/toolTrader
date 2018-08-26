@@ -1,3 +1,4 @@
+import { PostToolComponent } from './post-tool/post-tool.component';
 import { Routes } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
@@ -9,6 +10,7 @@ import { AuthGuard } from './core/auth.guard';
 export const rootRouterConfig: Routes = [
   { path: '', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
-  { path: 'profile-home', component: ProfileHomeComponent,  resolve: { data: UserResolver}}
+  { path: 'profile-home', component: ProfileHomeComponent,  resolve: { data: UserResolver}},
+  { path: 'post-tool', component: PostToolComponent,  resolve: { data: UserResolver}}
 ];
 

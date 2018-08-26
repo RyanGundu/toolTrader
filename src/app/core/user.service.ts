@@ -42,10 +42,13 @@ export class UserService {
   }
 
   addUser(user: FirebaseUserModel) {
+    var userID = firebase.auth().currentUser.uid;
+
     this.userCollection.doc(user.username).set({
       firstName: user.firstName,
       lastName: user.lastName,
-      email: user.email
+      email: user.email,
+      uid: userID
   })
   }
 
