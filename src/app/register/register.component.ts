@@ -21,6 +21,8 @@ export class RegisterComponent implements OnInit {
     email: ''
   }
   public isValidUsername = true;
+  public errorMessage = "";
+  public isError = false;
 
   constructor(
     public authService: AuthService,
@@ -70,6 +72,31 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/user']);
     }, err => console.log(err)
     )
+  }
+
+  formValidation (value) {
+    let values = [
+      value.firstName, 
+      value.lastName, 
+      value.email, 
+      value.username, 
+      value.password,
+      value.confirmPassword
+    ];
+    let inValid = /\s/;
+    this.isError = false;
+    for (let val of values) {
+      if(inValid.test(val)) { //if key contains a space
+        this.errorMessage = "Spaces are not allowed";
+        this.isError = true;
+        return;
+      } else if (val === "") {
+        this.errorMessage = "All fields are required";
+        this.isError = true;
+        return;
+      }
+    }
+    this.validUsername(value);
   }
 
   validUsername(value) {

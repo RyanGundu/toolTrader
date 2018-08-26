@@ -1,5 +1,6 @@
+
 .navbar {
-    background: linear-gradient(to bottom, #005AA7, #33a0ff)
+    background: linear-gradient(to bottom, #005AA7, #33a0ff);
 }
 
 .navbar li > a {
@@ -9,7 +10,6 @@
 
 .navbar li > a:hover {
     font-size: 17px;
-    /* text-decoration: underline;  */
     transition: 0.4s all linear;
 }
 
@@ -20,12 +20,8 @@
     color: white !important;
     margin-top: 0;
     text-decoration: none;
-}
+} 
 
-/* .header-title:hover {
-    font-size: 32px;
-    transition: 0.6s all linear;
-} */
 
 img {
     border-radius: 50%;
