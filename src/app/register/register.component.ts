@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   public isValidUsername = true;
   public errorMessage = "";
   public isError = false;
+  public termsOfUse = false;
 
   constructor(
     public authService: AuthService,
@@ -74,6 +75,14 @@ export class RegisterComponent implements OnInit {
     )
   }
 
+  userAgreement(event) {
+    if ( event.target.checked ) {
+        this.termsOfUse = true;
+    } else {
+      this.termsOfUse = false;
+    }
+  }
+
   formValidation (value) {
     let values = [
       value.firstName, 
@@ -87,18 +96,6 @@ export class RegisterComponent implements OnInit {
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     this.isError = false;
 
-    if (!mailformat.test(value.email)) { //check for valid email format
-      this.errorMessage = "Invalid Email";
-      this.isError = true;
-      return;
-    }
-
-    if (value.password.length < 6) { //password a minimum of 6 characters
-      this.errorMessage = "Password must be at least 6 characters";
-      this.isError = true;
-      return;
-    }
-
     for (let val of values) {
       if(inValid.test(val)) { //if key contains a space
         this.errorMessage = "Spaces are not allowed";
@@ -110,6 +107,22 @@ export class RegisterComponent implements OnInit {
         return;
       }
     }
+    if (!mailformat.test(value.email)) { //check for valid email format
+      this.errorMessage = "Invalid Email";
+      this.isError = true;
+      return;
+    }
+    if (value.password.length < 6) { //password a minimum of 6 characters
+      this.errorMessage = "Password must be at least 6 characters";
+      this.isError = true;
+      return;
+    }
+    if (!this.termsOfUse) {
+      this.errorMessage = "All members must agree to the terms of use";
+      this.isError = true;
+      return;
+    }
+
     this.validUsername(value);
   }
   
