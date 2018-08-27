@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import { PostToolComponent } from './post-tool/post-tool.component';
+import { ProfileUserComponent } from './profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PostToolComponent } from './post-tool/post-tool.component';
     RegisterComponent,
     HeaderComponent,
     ProfileHomeComponent,
-    PostToolComponent
+    PostToolComponent,
+    ProfileUserComponent
   ],
   imports: [
     BrowserModule,

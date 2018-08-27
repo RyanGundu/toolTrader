@@ -1,0 +1,16 @@
+.profile-container {
+    margin-top: 160px;
+}
+
+.profile-header {
+    background: linear-gradient(to left, #005AA7, #33a0ff);
+}
+
+.profile-header .row {
+    margin: 8px;
+}
+
+.profile-header .rating-img {
+    padding:12px;
+}
+
