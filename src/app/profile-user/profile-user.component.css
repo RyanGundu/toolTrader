@@ -1,16 +1,108 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 .profile-container {
     margin-top: 160px;
 }
 
 .profile-header {
-    background: linear-gradient(to left, #005AA7, #33a0ff);
+    background: linear-gradient(to top, #33a0ff, white);
+    min-height: 300px;
+    padding: 0;
+    margin: 0;
 }
 
-.profile-header .row {
-    margin: 8px;
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+.profile-img {
+    width: 170px;
+    height:170px;
+    border-radius: 50%;
+    padding: 7px;
+    background-color: #33a0ff;
 }
 
-.profile-header .rating-img {
-    padding:12px;
+.user-name {
+    color: white;
+    text-shadow: 1px black; 
 }
+
+.text-break {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.edit-info {
+    max-width: 80px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.profile-tabs {
+    font: 14px/1 'Open Sans', sans-serif;
+    /* color: #555; */
+    background: #eee;
+  }
+  
+  
+  main {
+    min-width: 320px;
+    /* max-width: 1100px; */
+    padding: 20px;
+    margin: 0 auto;
+    background: #fff;
+  }
+  
+  section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+  }
+  
+  input {
+    display: none;
+  }
+  
+  label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+  }
+  
+  label:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+  }
+  
+  label[for*='1']:before { content: '\f0ad'; }
+  label[for*='2']:before { content: '\f067'; }
+  label[for*='3']:before { content: '\f02f'; }
+  label[for*='4']:before { content: '\f1a9'; }
+  
+  label:hover {
+    color: #888;
+    cursor: pointer;
+  }
+  
+  input:checked + label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #33a0ff;
+    border-bottom: 1px solid #fff;
+  }
+  
+  #tab1:checked ~ #content1,
+  #tab2:checked ~ #content2,
+  #tab3:checked ~ #content3,
+  #tab4:checked ~ #content4 {
+    display: block;
+  }
 
