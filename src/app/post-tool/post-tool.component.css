@@ -10,3 +10,14 @@ fieldset {
 .container {
     margin-top: 160px;
 }
+
+.wrapper {
+    text-align: center;
+}
+
+#btn {
+    width: 10%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

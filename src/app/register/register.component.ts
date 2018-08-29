@@ -128,7 +128,7 @@ export class RegisterComponent implements OnInit {
   
 
   validUsername(value) {
-    this.db.firestore.collection('user').doc(this.firebaseUserModel.username).get()
+    this.db.firestore.collection('user').doc(this.registerForm.get('username').value).get()
     .then(docSnapshot => {
       if (docSnapshot.exists) {
       this.isValidUsername = false;
@@ -146,16 +146,19 @@ export class RegisterComponent implements OnInit {
     this.authService.doRegister(value)
     .then(res => {
       console.log(res);
-      // this.errorMessage = "";
-      // this.successMessage = "Your account has been created";
-
+      this.updateUserModel();
       this.userService.addUser(this.firebaseUserModel);
       this.router.navigate(['/']);
     }, err => {
       console.log(err);
-      // this.errorMessage = err.message;
-      // this.successMessage = "";
     })
+  }
+
+  updateUserModel() {
+    this.firebaseUserModel.email = this.registerForm.get('email').value;
+    this.firebaseUserModel.firstName = this.registerForm.get('firstName').value;
+    this.firebaseUserModel.lastName = this.registerForm.get('lastName').value;
+    this.firebaseUserModel.username = this.registerForm.get('username').value;
   }
 
   setValidUserTrue() {

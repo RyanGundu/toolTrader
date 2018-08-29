@@ -6,12 +6,8 @@
     <app-header></app-header>
 
 <div class="container">
-  
-
 		<h2>ToolTrader Post</h2>
-
-    
-    <form class="form-horizontal">
+    <form [formGroup]="postForm" class="form-horizontal" >
 <fieldset>
 
 <!-- Form Name -->
@@ -21,16 +17,15 @@
 
 <label class="col-md-4 control-label" for="radio-inline">Post Type</label>  
 <div class="col-md-4">
-
-<label class="radio-inline"><input type="radio" name="optradio" checked>For Sale</label>
-<label class="radio-inline"><input type="radio" name="optradio">For Rent</label>
+<label class="radio-inline"><input  type="radio" name="postType" formControlName="postType" value="sale" checked>For Sale</label>
+<label class="radio-inline"><input type="radio" name="postType" formControlName="postType" value="rent">For Rent</label>
 </div>
 </div>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Ad Title</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+  <input id="textinput" formControlName="adTitle" name="adTitle" type="text" placeholder="" class="form-control input-md">
     
   </div>
 </div>
@@ -39,7 +34,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textarea">Description</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="textarea" name="textarea"></textarea>
+    <textarea formControlName="description" class="form-control" id="textarea" name="description"></textarea>
   </div>
 </div>
 
@@ -48,10 +43,10 @@
   <label class="col-md-4 control-label" for="radio">Price</label>  
   <div class="col-md-4">
     <div class="radio">
-      <label><input type="radio" name="reason" value="">Custom: $ <input type="text" name="other_reason"/></label>
+      <label><input type="radio" formControlName="price" name="price" value="custom" >Custom: $ <input formControlName="priceNumber" type="text" name="priceNumber"/></label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="optradio">Contact Me</label>
+      <label><input type="radio" formControlName="price" name="price" value="contact">Contact Me</label>
     </div>
   </div>
 </div>
@@ -59,14 +54,14 @@
 <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Availability</label>  
     <div class="col-md-4">
-    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+    <input formControlName="availability" id="textinput" name="availability" type="text" placeholder="" class="form-control input-md">
     </div>
   </div>
 
 <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Address</label>  
     <div class="col-md-4">
-    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+    <input formControlName="address" id="textinput" name="address" type="text" placeholder="" class="form-control input-md">
     </div>
   </div>
 
@@ -95,10 +90,28 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Keyword</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+  <input formControlName="keyword" id="textinput" name="keyword" type="text" placeholder="" class="form-control input-md">
   <span class="help-block">example:alibaba</span>  
   </div>
 </div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Phone</label>  
+    <div class="col-md-4">
+    <input formControlName="phone" id="textinput" name="phone" type="text" placeholder="" class="form-control input-md">
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Email</label>  
+      <div class="col-md-4">
+      <input formControlName="email" id="textinput" name="email" type="text" placeholder="" class="form-control input-md">
+      </div>
+    </div>
+    
+  <div class="wrapper">
+   <button id="btn" type="submit" class="btn btn-primary" (click)="tryPost()">Submit</button>
+  </div>
 
 </fieldset>
 </form>

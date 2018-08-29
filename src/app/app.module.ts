@@ -1,3 +1,4 @@
+import { PostService } from './core/post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -41,7 +42,7 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, PostService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
