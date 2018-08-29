@@ -84,8 +84,8 @@
   
   label[for*='1']:before { content: '\f0ad'; }
   label[for*='2']:before { content: '\f067'; }
-  label[for*='3']:before { content: '\f02f'; }
-  label[for*='4']:before { content: '\f1a9'; }
+  label[for*='3']:before { content: '\f0ca'; }
+  label[for*='4']:before { content: '\f005'; }
   
   label:hover {
     color: #888;
@@ -105,4 +105,3 @@
   #tab4:checked ~ #content4 {
     display: block;
   }
-
