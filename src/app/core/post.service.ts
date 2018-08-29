@@ -11,7 +11,7 @@ export class PostService {
   postCollection : AngularFirestoreCollection<PostModel>;
   constructor(
    public db: AngularFirestore,
-   public afAuth: AngularFireAuth
+   public afAuth: AngularFireAuth,
  ){
   this.postCollection = this.db.collection('post');
 
@@ -20,6 +20,7 @@ export class PostService {
   createPost(post: PostModel) {
     var userID = firebase.auth().currentUser.uid;
     const id = this.db.createId();
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp()
     this.postCollection.doc(id).set({
     postType: post.postType,
     adTitle : post.adTitle,
@@ -32,7 +33,8 @@ export class PostService {
     phone : post.phone,
     email : post.email,
     priceNumber : post.priceNumber,
-    uid: userID
+    uid: userID,
+    datePosted : timestamp
   })
   }
 
