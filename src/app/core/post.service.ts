@@ -11,19 +11,32 @@ import { Observable } from 'rxjs';
 export class PostService {
   postCollection : AngularFirestoreCollection<PostModel>;
   postCollectArray: AngularFirestoreCollection<PostModel>;
+  userPost: AngularFirestoreCollection<PostModel>;
   posts : Observable<PostModel[]>;
+  uPosts : Observable<PostModel[]>;
+
   constructor(
    public db: AngularFirestore,
    public afAuth: AngularFireAuth,
  ){
   this.postCollection = this.db.collection('post');
   this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.orderBy('datePosted', 'desc'));
-
+  this.userPost = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()))
   this.posts = this.postCollectArray.valueChanges();
+  this.uPosts = this.userPost.valueChanges();
+
  }
+
+ getCurrentUid() {
+  return firebase.auth().currentUser.uid;
+}
 
   getPosts() {
     return this.posts;
+  }
+
+  getUserPosts() {
+    return this.uPosts;
   }
 
   createPost(post: PostModel) {

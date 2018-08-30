@@ -24,6 +24,7 @@ import { PostToolComponent } from './post-tool/post-tool.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { UserPostsComponent } from './user-posts/user-posts.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     PostToolComponent,
     ProfileUserComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    UserPostsComponent
   ],
   imports: [
     BrowserModule,
