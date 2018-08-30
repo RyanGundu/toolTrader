@@ -26,6 +26,11 @@ export class PostToolComponent implements OnInit {
     priceNumber: ''
   }
 
+  public errorMessage = "";
+  public successMessage = "Your post has been uploaded!";
+  public isError = false;
+  public isSuccess = false;
+
   constructor(
     public db: AngularFirestore,
     public postService : PostService,
@@ -53,9 +58,42 @@ export class PostToolComponent implements OnInit {
     });
   }
 
+  verifyEmail(email) {
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return mailformat.test(email);
+  }
+
+  validPosting() {
+    if (this.postModel.adTitle == "") {
+      this.errorMessage = "A title is requied";
+      return false;
+    } else if (this.postModel.description.length < 20) {
+      this.errorMessage = "Description must be at least 20 characters";
+      return false;
+    } else if (this.postModel.address == "") {
+      this.errorMessage = "Please provide an Address";
+      return false;
+    } else if (this.postModel.phone == "") {
+      this.errorMessage = "A phone number is required";
+      return false;
+    } else if (!this.verifyEmail(this.postModel.email)) {
+      this.errorMessage = "A valid email is required";
+      return false;
+    }
+    return true;
+  }
+
   tryPost() {
+    this.isError = false;
     this.updatePostModel();
-    this.postService.createPost(this.postModel);
+    if (this.validPosting()) {
+      this.postService.createPost(this.postModel);
+      this.postForm.reset();
+      this.isSuccess = true;
+    } else {
+      this.isError = true;
+    }
+    
   }
 
   updatePostModel() {

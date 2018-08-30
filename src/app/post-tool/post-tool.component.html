@@ -6,113 +6,115 @@
 
 <div class="container">
 		<h2>ToolTrader Post</h2>
-    <form [formGroup]="postForm" class="form-horizontal" >
-<fieldset>
+<form [formGroup]="postForm" class="form-horizontal" >
+  <fieldset>
 
-<!-- Form Name -->
-<legend>Sell/Rent a Tool</legend>
+  <!-- Form Name -->
+  <legend>Sell/Rent a Tool</legend>
 
-<div class="form-group">
+  <div class="form-group">
 
-<label class="col-md-4 control-label" for="radio-inline">Post Type</label>  
-<div class="col-md-4">
-<label class="radio-inline"><input  type="radio" name="postType" formControlName="postType" value="sale" checked>For Sale</label>
-<label class="radio-inline"><input type="radio" name="postType" formControlName="postType" value="rent">For Rent</label>
-</div>
-</div>
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Ad Title</label>  
+  <label class="col-md-4 control-label" for="radio-inline">Post Type</label>  
   <div class="col-md-4">
-  <input id="textinput" formControlName="adTitle" name="adTitle" type="text" placeholder="" class="form-control input-md">
-    
+  <label class="radio-inline"><input  type="radio" name="postType" formControlName="postType" value="sale" checked>For Sale</label>
+  <label class="radio-inline"><input type="radio" name="postType" formControlName="postType" value="rent">For Rent</label>
   </div>
-</div>
-
-<!-- Textarea -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textarea">Description</label>
-  <div class="col-md-4">                     
-    <textarea formControlName="description" class="form-control" id="textarea" name="description"></textarea>
   </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="radio">Price</label>  
-  <div class="col-md-4">
-    <div class="radio">
-      <label><input type="radio" formControlName="price" name="price" value="custom" >Custom: $ <input formControlName="priceNumber" type="text" name="priceNumber"/></label>
-    </div>
-    <div class="radio">
-      <label><input type="radio" formControlName="price" name="price" value="contact">Contact Me</label>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">Availability</label>  
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">*Ad Title</label>  
     <div class="col-md-4">
-    <input formControlName="availability" id="textinput" name="availability" type="text" placeholder="" class="form-control input-md">
+    <input id="textinput" formControlName="adTitle" name="adTitle" type="text" placeholder="" class="form-control input-md">
+      
     </div>
   </div>
 
-<div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">Address</label>  
-    <div class="col-md-4">
-    <input formControlName="address" id="textinput" name="address" type="text" placeholder="" class="form-control input-md">
+  <!-- Textarea -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textarea">*Description <br>(20 characters minimum)</label>
+    <div class="col-md-4">                     
+      <textarea formControlName="description" class="form-control" id="textarea" name="description"></textarea>
     </div>
   </div>
 
-<!-- Select Basic -->
-<!--
-<div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic">Location</label>
-  <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
-    </select>
-  </div>
-</div>
--->
-
-<!-- File Button --> 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="filebutton">Upload File</label>
-  <div class="col-md-4">
-    <input id="filebutton" name="filebutton" class="input-file" type="file">
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Keyword</label>  
-  <div class="col-md-4">
-  <input formControlName="keyword" id="textinput" name="keyword" type="text" placeholder="" class="form-control input-md">
-  <span class="help-block">example:alibaba</span>  
-  </div>
-</div>
-
-<div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">Phone</label>  
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="radio">Price</label>  
     <div class="col-md-4">
-    <input formControlName="phone" id="textinput" name="phone" type="text" placeholder="" class="form-control input-md">
+      <div class="radio">
+        <label><input type="radio" formControlName="price" name="price" value="custom" >Custom: $ <input formControlName="priceNumber" type="text" name="priceNumber"/></label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" formControlName="price" name="price" value="contact">Contact Me</label>
+      </div>
     </div>
   </div>
 
   <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Email</label>  
+      <label class="col-md-4 control-label" for="textinput">Availability</label>  
+      <div class="col-md-4">
+      <input formControlName="availability" id="textinput" name="availability" type="text" placeholder="" class="form-control input-md">
+      </div>
+    </div>
+
+  <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">*Address</label>  
+      <div class="col-md-4">
+      <input formControlName="address" id="textinput" name="address" type="text" placeholder="" class="form-control input-md">
+      </div>
+    </div>
+
+  <!-- Select Basic -->
+  <!--
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="selectbasic">Location</label>
+    <div class="col-md-4">
+      <select id="selectbasic" name="selectbasic" class="form-control">
+        <option value="1">Option one</option>
+        <option value="2">Option two</option>
+      </select>
+    </div>
+  </div>
+  -->
+
+  <!-- File Button --> 
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="filebutton">Upload File</label>
+    <div class="col-md-4">
+      <input id="filebutton" name="filebutton" class="input-file" type="file">
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Keyword</label>  
+    <div class="col-md-4">
+    <input formControlName="keyword" id="textinput" name="keyword" type="text" placeholder="" class="form-control input-md">
+    <span class="help-block">example:alibaba</span>  
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">*Phone</label>  
+      <div class="col-md-4">
+      <input formControlName="phone" id="textinput" name="phone" type="text" placeholder="" class="form-control input-md">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">*Email</label>  
       <div class="col-md-4">
       <input formControlName="email" id="textinput" name="email" type="text" placeholder="" class="form-control input-md">
       </div>
     </div>
-    
-  <div class="wrapper">
-   <button id="btn" type="submit" class="btn btn-primary" (click)="tryPost()">Submit</button>
-  </div>
 
-</fieldset>
+    <div class="alert alert-danger" *ngIf="isError" style="max-width: 400px; margin: auto">{{errorMessage}}</div> 
+    <div class="alert alert-success" *ngIf="isSuccess" style="max-width: 400px; margin: auto">{{successMessage}}</div>
+    <div class="wrapper">
+    <button id="btn" type="submit" class="btn btn-primary" (click)="tryPost()">Submit</button>
+    </div>
+
+  </fieldset>
 </form>
 
     
