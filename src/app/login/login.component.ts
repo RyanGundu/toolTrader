@@ -11,6 +11,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  resetPassword = false;
+  isEmail = true;
   
   constructor(
     public authService: AuthService,
@@ -59,6 +61,31 @@ export class LoginComponent implements OnInit {
       console.log(err);
       // this.errorMessage = err.message;
     })
+  }
+
+  verifyEmail(email) {
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return mailformat.test(email);
+  }
+
+  sendResetEmail(email) {
+    if (this.verifyEmail(email)) {
+      this.authService.resetPassword(email)
+        .then(() => {
+          this.isEmail = true;
+          this.resetPassword = true})
+        .catch(_error => {
+          // this.resetError = _error
+          console.log(_error);
+        })
+    } else {
+        console.log("invalid email");
+        this.isEmail = false;
+    }
+  }
+
+  setIsEmailTrue() {
+    this.isEmail = true;
   }
 
 

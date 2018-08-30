@@ -43,12 +43,14 @@
                 </small>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Email:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <input #emailReset type="text" class="form-control" id="recipient-name" (ngModelChange)="setIsEmailTrue()">
                 </div>
               </form>
+              <div class="alert alert-success" *ngIf="resetPassword">An Email has been sent!</div>
+              <div class="alert alert-danger" *ngIf="!isEmail">Invalid email format</div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Reset Password</button>
+              <button type="button" class="btn btn-primary" (click)="sendResetEmail(emailReset.value)">Reset Password</button>
             </div>
           </div>
         </div>
