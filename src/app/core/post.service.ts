@@ -22,8 +22,6 @@ export class PostService {
   this.postCollection = this.db.collection('post');
   this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.orderBy('datePosted', 'desc'));
   this.userPost = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()))
-  this.posts = this.postCollectArray.valueChanges();
-  this.uPosts = this.userPost.valueChanges();
 
  }
 
@@ -32,10 +30,13 @@ export class PostService {
 }
 
   getPosts() {
+    this.posts = this.postCollectArray.valueChanges();
     return this.posts;
+    
   }
 
   getUserPosts() {
+    this.uPosts = this.userPost.valueChanges();
     return this.uPosts;
   }
 

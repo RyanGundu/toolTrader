@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  encapsulation:  ViewEncapsulation.Native
+  encapsulation:  ViewEncapsulation.ShadowDom
 })
 export class HeaderComponent implements OnInit {
 
