@@ -17,7 +17,7 @@ export class PostService {
    public afAuth: AngularFireAuth,
  ){
   this.postCollection = this.db.collection('post');
-  this.postCollectArray = this.db.collection<PostModel>('post');
+  this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.orderBy('datePosted', 'desc'));
 
   this.posts = this.postCollectArray.valueChanges();
  }
