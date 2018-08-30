@@ -20,7 +20,7 @@ export class PostService {
   createPost(post: PostModel) {
     var userID = firebase.auth().currentUser.uid;
     const id = this.db.createId();
-    const timestamp = firebase.firestore.FieldValue.serverTimestamp()
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
     this.postCollection.doc(id).set({
     postType: post.postType,
     adTitle : post.adTitle,

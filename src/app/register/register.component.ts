@@ -94,6 +94,7 @@ export class RegisterComponent implements OnInit {
     ];
     let inValid = /\s/;
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i
     this.isError = false;
 
     for (let val of values) {
