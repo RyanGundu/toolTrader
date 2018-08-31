@@ -44,7 +44,7 @@ export class PostToolComponent implements OnInit {
 
   createForm() {
     this.postForm = this.fb.group({
-      postType: ['sale', Validators.required ],
+      postType: ['For Sale', Validators.required ],
       adTitle: ['', Validators.required ],
       description: ['', Validators.required ],
       price: ['custom', Validators.required ],

@@ -1,0 +1,11 @@
+img{width:100%}
+
+.container {
+    margin-top: 150px;
+}
+
+.card:hover {border:1px solid #dd0000;}
+
+p {
+   font-size: 20px;
+}

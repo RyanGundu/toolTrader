@@ -1,3 +1,73 @@
-<p>
-  homepage works!
-</p>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<app-header></app-header>
+<!-- <div *ngIf="posts?.length > 0;else noPosts">
+<div *ngFor="let post of posts" class="collection">
+  <div class="span8">
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="span2">
+        <a href="#" class="thumbnail">
+            <img src="http://placehold.it/260x180" alt="">
+        </a>
+      </div>
+      <div class="span6">  
+          <h3><strong><a href="#">{{post.adTitle}}</a></strong></h3>    
+        <p>
+          {{post.description}}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span8">
+        <p></p>
+        <p>
+          <i class="icon-user"></i> by <a href="#">{{post.uid}}</a> 
+          | <i class="icon-calendar"></i> {{post.datePosted.toDate() | date:'MMM-dd-yyyy'}}
+          | <i class="icon-home"></i> {{post.address}}
+        </p>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+</div> -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container" *ngIf="posts?.length > 0;else noPosts">
+	<div class="row"  *ngFor="let post of posts">
+		<div class="col-md-12">
+		    <div class="card bg-light mb-3">
+              <div class="row">
+                  <div class="col-md-3">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg">
+                  </div>
+                  <div class="col-md-6  card-body">
+                      <h4><strong><a href="#">{{post.postType}} : {{post.adTitle}}</a></strong></h4>    
+                      <small><i class="icon-calendar"></i> {{post.datePosted.toDate() | date:'MMM-dd-yyyy'}} | <i class="icon-home"></i> {{post.address}}</small>
+                      <br><br>
+                      <p>{{post.description}}</p>
+                    <br><br>
+                    <small><i class="icon-user"></i> by <a href="#">{{post.uid}}</a></small>
+                  </div>
+                 
+              </div>
+              
+		</div>
+	</div>
+</div> 
+</div>
+
+<ng-template #noPosts>
+  <hr>
+  <h5>No Posts Yet</h5>
+</ng-template>
