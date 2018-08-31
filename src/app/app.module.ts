@@ -8,7 +8,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
-import { UserResolver } from './profile-home/profile-home.resolver';
+import { UserResolver } from './core/profile-home.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
@@ -19,7 +19,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
-import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import { PostToolComponent } from './post-tool/post-tool.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { FooterComponent } from './footer/footer.component';
@@ -32,7 +31,6 @@ import { UserPostsComponent } from './user-posts/user-posts.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    ProfileHomeComponent,
     PostToolComponent,
     ProfileUserComponent,
     FooterComponent,
