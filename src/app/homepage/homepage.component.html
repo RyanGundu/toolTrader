@@ -71,6 +71,9 @@
 	</div>
 </div> 
 </div>
+<button (click)="previous()" [disabled]="!(pgCount > 0)">previous</button>
+<button (click)="next()">next</button>
+
 
 <ng-template #noPosts>
   <hr>

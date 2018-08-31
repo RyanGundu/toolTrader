@@ -14,24 +14,83 @@ export class PostService {
   userPost: AngularFirestoreCollection<PostModel>;
   posts : Observable<PostModel[]>;
   uPosts : Observable<PostModel[]>;
+  lastVisible: any;
+  firstVisible: any;
+
 
   constructor(
    public db: AngularFirestore,
    public afAuth: AngularFireAuth,
  ){
   this.postCollection = this.db.collection('post');
-  this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.orderBy('datePosted', 'desc'));
+  this.lastVisible = "0";
+  this.firstVisible = "0";
  }
 
  getCurrentUid() {
   return firebase.auth().currentUser.uid;
 }
 
-  getPosts() {
+  getPosts(value:string) {
+
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => {
+      ref.orderBy('datePosted', 'desc').startAfter(value).limit(5).get().then( (documentSnapshots) => {
+        // Get the last visible document
+        console.log(documentSnapshots)
+        console.log(documentSnapshots.docs)
+        this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+        this.firstVisible = documentSnapshots.docs[0];
+        // console.log('last', this.lastVisible);
+      });
+      return ref.orderBy('datePosted', 'desc').startAfter(value).limit(5);
+    }); //
+
+
     this.posts = this.postCollectArray.valueChanges();
     return this.posts;
     
   }
+
+
+  next() {
+
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => {
+      ref.orderBy('datePosted', 'desc').startAfter(this.lastVisible).limit(5).get().then( (documentSnapshots) => {
+        // Get the last visible document
+        console.log(documentSnapshots)
+        console.log(documentSnapshots.docs)
+        this.firstVisible = documentSnapshots.docs[0];
+
+        this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+         console.log('last', this.firstVisible);
+      });
+      return ref.orderBy('datePosted', 'desc').startAfter(this.lastVisible).limit(5);
+    }); //
+
+    this.posts = this.postCollectArray.valueChanges();
+    return this.posts;
+    
+  }
+
+  previous() {
+
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => {
+      ref.orderBy('datePosted', 'desc').endBefore(this.firstVisible).limit(5).get().then( (documentSnapshots) => {
+        // Get the last visible document
+        console.log(documentSnapshots)
+        console.log(documentSnapshots.docs)
+        this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+        this.firstVisible = documentSnapshots.docs[0];
+        // console.log('last', this.lastVisible);
+      });
+      return ref.orderBy('datePosted', 'desc').endBefore(this.firstVisible).limit(5);
+    }); //
+
+    this.posts = this.postCollectArray.valueChanges();
+    return this.posts;
+    
+  }
+
 
   getUserPosts() {
     this.userPost = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()))
