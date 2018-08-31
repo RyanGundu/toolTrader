@@ -9,7 +9,7 @@ import { AuthGuard } from './core/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 
 export const rootRouterConfig: Routes = [
-  { path: '', component: HomepageComponent},
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'post-tool', component: PostToolComponent,  resolve: { data: UserResolver}},

@@ -28,7 +28,7 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
           return resolve(user);
         }
       }, err => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         return reject(err);
       })
     })

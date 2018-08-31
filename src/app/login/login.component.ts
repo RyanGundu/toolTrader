@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.router.navigate(['/home-page']);
+      this.router.navigate(['/']);
     }, err => {
       console.log(err);
       // this.errorMessage = err.message;
