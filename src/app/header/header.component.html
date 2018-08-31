@@ -19,7 +19,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a routerLink="">Link <span class="sr-only">(current)</span></a></li>
+        <li><a routerLink="">Link</a></li>
         <li><a routerLink="">Link</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
@@ -30,21 +30,25 @@
             <li role="separator" class="divider"></li>
             <li><a routerLink="">Separated link</a></li>
             <li role="separator" class="divider"></li>
-            <li><a (click)="logout()">Log Out</a></li>
+            <li><a routerLink="">Separated link</a></li>
           </ul>
         </li>
       </ul>
 
+      <h2 class="text-center"></h2>
+
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="">Link</a></li>
+        <li class="active"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a routerLink="/profile-user">Profile</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a routerLink="">Action</a></li>
             <li><a routerLink="">Another action</a></li>
-            <li><a routerLink="">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a routerLink="">Separated link</a></li>
+            <li><a routerLink="/login">Login/Register</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a (click)="logout()">Log Out</a></li>
           </ul>
         </li>
       </ul>
