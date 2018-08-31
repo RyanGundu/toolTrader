@@ -2,8 +2,8 @@
 
   <div *ngIf="userPosts?.length > 0; else noPosts">
     <div  *ngFor="let post of userPosts">
-      <div class="col-lg-3">
-        <div class="card" style="width:300px">
+      <div class="col-lg-3 col-md-4 col-sm-8">
+        <div class="card" style="width:100%; max-width: 300px;">
           <img class="card-img-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg" alt="Card image" style="width:100%">
           <div class="card-body">
             <h4 class="card-title">{{post.adTitle}}</h4>
