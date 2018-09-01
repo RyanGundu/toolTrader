@@ -31,7 +31,7 @@ export class HomepageComponent implements OnInit {
 
   previous() {
     this.pgCount--;
-    this.postService.previous().subscribe(posts => {
+    this.postService.previous(this.pgCount).subscribe(posts => {
       this.posts = posts;
     });
   }

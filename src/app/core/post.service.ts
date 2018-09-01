@@ -15,7 +15,8 @@ export class PostService {
   posts : Observable<PostModel[]>;
   uPosts : Observable<PostModel[]>;
   lastVisible: any;
-  firstVisible: any;
+  firstVisible: any[] = [];
+  flag: boolean;
 
 
   constructor(
@@ -24,7 +25,8 @@ export class PostService {
  ){
   this.postCollection = this.db.collection('post');
   this.lastVisible = "0";
-  this.firstVisible = "0";
+  this.firstVisible.push("0");
+  this.flag = false;
  }
 
  getCurrentUid() {
@@ -39,7 +41,6 @@ export class PostService {
         console.log(documentSnapshots)
         console.log(documentSnapshots.docs)
         this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
-        this.firstVisible = documentSnapshots.docs[0];
         // console.log('last', this.lastVisible);
       });
       return ref.orderBy('datePosted', 'desc').startAfter(value).limit(5);
@@ -59,10 +60,8 @@ export class PostService {
         // Get the last visible document
         console.log(documentSnapshots)
         console.log(documentSnapshots.docs)
-        this.firstVisible = documentSnapshots.docs[0];
-
         this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
-         console.log('last', this.firstVisible);
+        this.firstVisible.push(documentSnapshots.docs[0]);
       });
       return ref.orderBy('datePosted', 'desc').startAfter(this.lastVisible).limit(5);
     }); //
@@ -72,18 +71,17 @@ export class PostService {
     
   }
 
-  previous() {
+  previous(pos:number) {
 
     this.postCollectArray = this.db.collection<PostModel>('post', ref => {
-      ref.orderBy('datePosted', 'desc').endBefore(this.firstVisible).limit(5).get().then( (documentSnapshots) => {
+      ref.orderBy('datePosted', 'desc').startAt(this.firstVisible[pos]).limit(5).get().then( (documentSnapshots) => {
         // Get the last visible document
         console.log(documentSnapshots)
         console.log(documentSnapshots.docs)
         this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
-        this.firstVisible = documentSnapshots.docs[0];
         // console.log('last', this.lastVisible);
       });
-      return ref.orderBy('datePosted', 'desc').endBefore(this.firstVisible).limit(5);
+      return ref.orderBy('datePosted', 'desc').startAt(this.firstVisible[pos]).limit(5);
     }); //
 
     this.posts = this.postCollectArray.valueChanges();
