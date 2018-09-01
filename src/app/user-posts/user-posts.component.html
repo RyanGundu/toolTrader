@@ -1,4 +1,4 @@
-<div class="userGallery">
+<div class="userGallery" scrollable (scrollPosition)="scrollHandler($event)">
 
   <div *ngIf="userPosts?.length > 0; else noPosts">
     <div  *ngFor="let post of userPosts">

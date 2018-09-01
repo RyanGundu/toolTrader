@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {  PostService } from './../core/post.service';
 import { PostModel } from './../core/post.model';
-import { ProfileUserComponent } from '../profile-user/profile-user.component';
-import { getViewData } from '../../../node_modules/@angular/core/src/render3/instructions';
+
+
+import { Observable } from 'rxjs/Observable';
+import { ScrollableDirective } from './../scrollable.directive';
+import { LoadingSpinnerComponent } from './../loading-spinner/loading-spinner.component';
+import { PaginationService } from './../pagination.service';
+
 
 @Component({
   selector: 'app-user-posts',
@@ -12,7 +17,7 @@ import { getViewData } from '../../../node_modules/@angular/core/src/render3/ins
 export class UserPostsComponent implements OnInit {
 
   userPosts: PostModel[];
-
+  
   constructor(private postService : PostService) {}
 
   ngOnInit() {
@@ -21,6 +26,11 @@ export class UserPostsComponent implements OnInit {
       this.userPosts = userPosts;
     });
     
+  }
+
+  scrollHandler(e) {
+    console.log(e)
+    // should log top or bottom
   }
 
 

@@ -38,6 +38,22 @@ export class AuthService {
   //   })
   // }
 
+  userStatus() {
+    let isLoggedIn = true;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log("logged in");
+        isLoggedIn= true;
+        
+      } else {
+        
+        console.log("logged out");
+        isLoggedIn = false;
+      }
+    });
+    return isLoggedIn;
+  }
+
   doGoogleLogin(){
     return new Promise<any>((resolve, reject) => {
       let provider = new firebase.auth.GoogleAuthProvider();

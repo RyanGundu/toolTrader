@@ -24,6 +24,9 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
+import { ScrollableDirective } from './scrollable.directive';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { PaginationService } from './pagination.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { UserPostsComponent } from './user-posts/user-posts.component';
     ProfileUserComponent,
     FooterComponent,
     HomepageComponent,
-    UserPostsComponent
+    UserPostsComponent,
+    ScrollableDirective,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ import { UserPostsComponent } from './user-posts/user-posts.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [AuthService, UserService, PostService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, PostService, UserResolver, AuthGuard, PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

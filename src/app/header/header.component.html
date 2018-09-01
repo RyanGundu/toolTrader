@@ -38,19 +38,20 @@
       <h2 class="text-center"></h2>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
-        <li><a routerLink="/profile-user">Profile</a></li>
-        <li class="dropdown">
+        <li class="active rightNav"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
+        <li class="rightNav"><a routerLink="/profile-user">Profile</a></li>
+        <li class="dropdown rightNav">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a routerLink="">Action</a></li>
             <li><a routerLink="">Another action</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a routerLink="/login">Login/Register</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a (click)="logout()">Log Out</a></li>
+            <li *ngIf="!isLoggedIn" role="separator" class="divider"></li>
+            <li *ngIf="!isLoggedIn" ><a routerLink="/login">Login/Register</a></li>
+            <li *ngIf="isLoggedIn" role="separator" class="divider"></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()">Log Out</a></li>
           </ul>
         </li>
+        <li><a class="btn btn-outlined btn-theme btn-lg postBtn" data-wow-delay="0.7s">Post Now</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
