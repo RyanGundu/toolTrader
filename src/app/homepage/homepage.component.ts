@@ -10,12 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
   posts: PostModel[];
   pgCount: number;
+  flag: boolean;
   constructor(private postService : PostService) { 
     
   }
 
   ngOnInit() {
-    console.log("ngOnInit");
+
     this.pgCount = 0;
     this.postService.getPosts("0").subscribe(posts => {
       this.posts = posts;
