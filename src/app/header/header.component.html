@@ -45,10 +45,10 @@
           <ul class="dropdown-menu">
             <li><a routerLink="">Action</a></li>
             <li><a routerLink="">Another action</a></li>
-            <li *ngIf="!isLoggedIn" role="separator" class="divider"></li>
-            <li *ngIf="!isLoggedIn" ><a routerLink="/login">Login/Register</a></li>
-            <li *ngIf="isLoggedIn" role="separator" class="divider"></li>
-            <li *ngIf="isLoggedIn"><a (click)="logout()">Log Out</a></li>
+            <li  role="separator" class="divider"></li>
+            <li  ><a routerLink="/login">Login/Register</a></li>
+            <li  role="separator" class="divider"></li>
+            <li ><a (click)="logout()">Log Out</a></li>
           </ul>
         </li>
         <li><a class="btn btn-outlined btn-theme btn-lg postBtn" data-wow-delay="0.7s">Post Now</a></li>

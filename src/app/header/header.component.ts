@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
 
-  public isLoggedIn:boolean = true;
+  // public isLoggedIn:boolean = true;
   constructor(
     public userService: UserService,
     public authService: AuthService,
@@ -24,8 +24,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.userStatus();
-    console.log(this.isLoggedIn);
+    // this.isLoggedIn = this.authService.userStatus();
+    // console.log(this.isLoggedIn);
   }
 
   logout(){
