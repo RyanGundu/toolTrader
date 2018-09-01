@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { PaginationService } from './pagination.service';
 
 
 @Component({
@@ -7,13 +8,17 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Tool Trader';
 
-  constructor() {}
+  constructor(public page: PaginationService) {}
 
   ngOnInit() {
 
+  }
+
+  scrollHandler(e) {
+    console.log(e);
   }
 
 }
