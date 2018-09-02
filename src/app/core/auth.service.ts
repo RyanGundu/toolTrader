@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 // import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -38,20 +39,18 @@ export class AuthService {
   //   })
   // }
 
-  userStatus() {
-    let isLoggedIn = true;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log("logged in");
-        isLoggedIn= true;
-        
-      } else {
-        
-        console.log("logged out");
-        isLoggedIn = false;
-      }
-    });
-    return isLoggedIn;
+
+  isLoggedIn() {
+    return this.afAuth.authState.pipe(first()).toPromise();
+  }
+
+  async userStatus() {
+    const user = await this.isLoggedIn()
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   doGoogleLogin(){

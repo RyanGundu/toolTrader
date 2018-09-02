@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {  PostService } from './../core/post.service';
+import { FirebaseUserModel } from '../core/user.model';
 
 @Component({
   selector: 'app-profile-user',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileUserComponent implements OnInit {
 
-  constructor() { }
+  userInfo: FirebaseUserModel;
+
+  constructor(private postService : PostService) { }
 
   ngOnInit() {
-    console.log("TEST");
+    this.postService.getUserInfo().subscribe(userInfo => {
+      console.log(userInfo);
+      this.userInfo = userInfo;
+    });
   }
 
 }
