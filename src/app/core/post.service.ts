@@ -15,8 +15,8 @@ export class PostService {
   userPost: AngularFirestoreCollection<PostModel>;
   posts : Observable<PostModel[]>;
   userPosts : Observable<PostModel[]>;
-  userCollection: AngularFirestoreCollection<FirebaseUserModel>; //should be type FirebaseUserModel;
-  userInfo: Observable<FirebaseUserModel[]>; //should be type FirebaseUserModel;
+  userCollection: AngularFirestoreCollection<FirebaseUserModel>;
+  userInfo: Observable<FirebaseUserModel[]>;
   lastVisible: any;
   globalFirst: any;
   firstVisible: any[] = [];
@@ -92,8 +92,8 @@ export class PostService {
 
 
   getUserPosts() {
-    this.userPost = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()))
-    this.userPosts = this.userPost.valueChanges();
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()))
+    this.userPosts = this.postCollectArray.valueChanges();
     return this.userPosts;
   }
 
