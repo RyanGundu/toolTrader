@@ -9,7 +9,7 @@ import { FirebaseUserModel } from '../core/user.model';
 })
 export class ProfileUserComponent implements OnInit {
 
-  userInfo: FirebaseUserModel;
+  userInfo: FirebaseUserModel[];
 
   constructor(private postService : PostService) { }
 

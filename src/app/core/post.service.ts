@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Observable';
 import { PostModel } from './post.model';
 import { FirebaseUserModel } from './user.model';
 import { Injectable } from "@angular/core";
@@ -16,6 +15,7 @@ export class PostService {
   userPost: AngularFirestoreCollection<PostModel>;
   posts : Observable<PostModel[]>;
   userPosts : Observable<PostModel[]>;
+  userCollection: AngularFirestoreCollection<FirebaseUserModel>; //should be type FirebaseUserModel;
   userInfo: Observable<FirebaseUserModel[]>; //should be type FirebaseUserModel;
   lastVisible: any;
   globalFirst: any;
@@ -98,8 +98,8 @@ export class PostService {
   }
 
   getUserInfo() {
-    this.userInfo = this.db.collection<FirebaseUserModel>('user', ref => ref.where("uid", "==", this.getCurrentUid()));
-    this.userInfo = this.userInfo.valueChanges();
+    this.userCollection = this.db.collection<FirebaseUserModel>('user', ref => ref.where("uid", "==", this.getCurrentUid()));
+    this.userInfo = this.userCollection.valueChanges();
     return this.userInfo;
   }
 
