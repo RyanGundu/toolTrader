@@ -1,4 +1,5 @@
 import { PostModel } from './post.model';
+import { ProfileModel } from './profile.model';
 import { FirebaseUserModel } from './user.model';
 import { Injectable } from "@angular/core";
 // import 'rxjs/add/operator/toPromise';
@@ -15,8 +16,8 @@ export class PostService {
   userPost: AngularFirestoreCollection<PostModel>;
   posts : Observable<PostModel[]>;
   userPosts : Observable<PostModel[]>;
-  userCollection: AngularFirestoreCollection<FirebaseUserModel>;
-  userInfo: Observable<FirebaseUserModel[]>;
+  userCollection: AngularFirestoreCollection<ProfileModel>;
+  userInfo: Observable<ProfileModel[]>;
   lastVisible: any;
   globalFirst: any;
   firstVisible: any[] = [];
@@ -92,13 +93,13 @@ export class PostService {
 
 
   getUserPosts() {
-    this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()))
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()).orderBy('datePosted', 'desc'));
     this.userPosts = this.postCollectArray.valueChanges();
     return this.userPosts;
   }
 
   getUserInfo() {
-    this.userCollection = this.db.collection<FirebaseUserModel>('user', ref => ref.where("uid", "==", this.getCurrentUid()));
+    this.userCollection = this.db.collection<ProfileModel>('userProfile', ref => ref.where("uid", "==", this.getCurrentUid()));
     this.userInfo = this.userCollection.valueChanges();
     return this.userInfo;
   }

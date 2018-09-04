@@ -1,7 +1,6 @@
 import { first } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import {  PostService } from './../core/post.service';
-import { FirebaseUserModel } from '../core/user.model';
 
 @Component({
   selector: 'app-profile-user',
@@ -14,13 +13,19 @@ export class ProfileUserComponent implements OnInit {
   public email = "";
   public firstName = "";
   public lastName = "";
-
+  public phone = "";
+  public address  = "";
+  public imgURL = "http://www.sunshineglobalhospitals.com/xadmin/myaccount/upload/default/profiledefault.png";
 
   constructor(private postService : PostService) { 
     this.postService.getUserInfo().subscribe(userInfo => {
       this.email = userInfo[0].email;
       this.firstName = userInfo[0].firstName;
       this.lastName = userInfo[0].lastName;
+      this.phone = userInfo[0].phoneNumber;
+      this.address = userInfo[0].address;
+      this.imgURL = userInfo[0].imgURL;
+
     });
   }
 

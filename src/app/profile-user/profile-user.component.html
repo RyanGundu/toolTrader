@@ -2,20 +2,20 @@
 <div class="profile-container">
 
     <div class="profile-header">
-        <img src="https://media.licdn.com/dms/image/C5603AQHPfm1kkxnFAw/profile-displayphoto-shrink_200_200/0?e=1541030400&v=beta&t=vSipwpoKtbNtw4XmY3p2oRFPRGeJaH2zwAjwlsexiRU" class="img-fluid profile-img center-block" alt="Responsive image">
         <div class="profile-info text-center">
+            <img [src]=imgURL class="img-fluid profile-img center-block" alt="Responsive image">
             <h2 class="user-name">{{firstName}} {{lastName}}</h2>
-            <div class="user-contact row text-center">
+            <div class="user-contact center-block">
                 <div class="row text-center">
                     <div class="col-md-4">
                         <a class="bg-primary"><i class="fa fa-map-marker"></i></a>
-                        <p class="details">San Francisco, CA 94126</p>
+                        <p class="details">{{address}}</p>
                         
                     </div>
     
                     <div class="col-md-4">
                         <a class="bg-primary"><i class="fa fa-phone"></i></a>
-                        <p class="details">123-456-789</p>
+                        <p class="details">{{phone}}</p>
                     </div>
     
                     <div class="col-md-4">
@@ -25,9 +25,37 @@
                     </div>
                 </div>
             </div>
+            <a data-toggle="modal" data-target="#exampleModal" class="btn btn-md center-block edit-info">Edit <i class="far fa fa-edit"></i></a>
         </div>
-        <a href="#" class="btn btn-primary btn-sm center-block edit-info">Edit <i class="far fa fa-edit"></i></a>
     </div>
+
+    <!-- MODAL -->
+    <div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <small>Edit Your  Account Information</small>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Email:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Apply Changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL END -->
+
     <div class="profile-tabs">
         <main>
 
