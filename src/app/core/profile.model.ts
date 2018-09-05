@@ -2,7 +2,6 @@ export class ProfileModel {
     firstName: string;
     lastName: string;
     address: string;
-    images: string;
     phoneNumber: string;
     email: string;
     imgURL: string;

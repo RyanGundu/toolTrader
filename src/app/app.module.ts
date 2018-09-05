@@ -12,6 +12,7 @@ import { UserResolver } from './core/profile-home.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
+import { ProfileService } from './core/profile.service';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { rootRouterConfig } from './app.routes';
 
@@ -51,7 +52,7 @@ import { PaginationService } from './pagination.service';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [AuthService, UserService, PostService, UserResolver, AuthGuard, PaginationService],
+  providers: [AuthService, UserService, PostService, ProfileService ,UserResolver, AuthGuard, PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

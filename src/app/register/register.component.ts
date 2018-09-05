@@ -1,5 +1,7 @@
 import { AngularFirestore } from 'angularfire2/firestore';
 import { FirebaseUserModel } from './../core/user.model';
+import { ProfileModel } from './../core/profile.model';
+import { ProfileService } from './../core/profile.service';
 import { UserService } from './../core/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
@@ -20,6 +22,14 @@ export class RegisterComponent implements OnInit {
     username: '',
     email: ''
   }
+  profileModel: ProfileModel = {
+    firstName: "",
+    lastName: "",
+    address: "",
+    phoneNumber: "",
+    email: "",
+    imgURL: ""
+  }
   public isValidUsername = true;
   public errorMessage = "";
   public isError = false;
@@ -30,7 +40,8 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public db: AngularFirestore,
-    private userService : UserService
+    private userService : UserService,
+    private profileService: ProfileService
   ) {
     this.createForm();
    }
@@ -148,7 +159,9 @@ export class RegisterComponent implements OnInit {
     .then(res => {
       console.log(res);
       this.updateUserModel();
+      this.updateProfileModel();
       this.userService.addUser(this.firebaseUserModel);
+      this.profileService.createUserProfile(this.profileModel);
       this.router.navigate(['/']);
     }, err => {
       console.log(err);
@@ -160,6 +173,14 @@ export class RegisterComponent implements OnInit {
     this.firebaseUserModel.firstName = this.registerForm.get('firstName').value;
     this.firebaseUserModel.lastName = this.registerForm.get('lastName').value;
     this.firebaseUserModel.username = this.registerForm.get('username').value;
+  }
+  updateProfileModel() {
+    this.profileModel.firstName = this.registerForm.get('firstName').value;
+    this.profileModel.lastName = this.registerForm.get('lastName').value;
+    this.profileModel.email = this.registerForm.get('email').value;
+    this.profileModel.imgURL = "";
+    this.profileModel.phoneNumber = "";
+    this.profileModel.address = "";
   }
 
   setValidUserTrue() {

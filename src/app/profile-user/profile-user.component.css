@@ -90,11 +90,11 @@
     border-top: 1px solid #ddd;
   }
   
-  input {
+  .profile-tabs input {
     display: none;
   }
   
-  label {
+  .profile-tabs label {
     display: inline-block;
     margin: 0 0 -1px;
     padding: 15px 25px;
