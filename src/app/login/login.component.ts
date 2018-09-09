@@ -81,11 +81,14 @@ export class LoginComponent implements OnInit {
     } else {
         console.log("invalid email");
         this.isEmail = false;
+        this.resetPassword = false;
+
     }
   }
 
   setIsEmailTrue() {
     this.isEmail = true;
+    this.resetPassword = false;
   }
 
 
