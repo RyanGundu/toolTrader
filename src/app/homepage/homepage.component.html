@@ -47,8 +47,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
 <!-- Include the above in your HEAD tag -->
-
+<body>
+  <br><br>
 <div class="container" *ngIf="posts?.length > 0;else noPosts">
+  <div id="top">
+    <p id="topText">Showing {{lastPostOnPage - 4}} - {{lastPostOnPage}} of {{totalPosts?.countVal}}</p>
+  </div>
 	<div class="row"  *ngFor="let post of posts">
 		<div class="col-md-12">
 		    <div class="card bg-light mb-3">
@@ -64,17 +68,19 @@
                     <br><br>
                     <small><i class="icon-user"></i> by <a href="#">{{post.uid}}</a></small>
                   </div>
-                 
               </div>
-              
 		</div>
 	</div>
 </div> 
 </div>
-<button (click)="previous()" [disabled]="!(pgCount > 0)">previous</button>
-<button (click)="next()" [disabled]="(posts?.length < 5)">next</button>
+
+<button id="prev" class="btn btn-success btn-xs" (click)="previous()" [disabled]="!(pgCount > 0)"> < prev</button>
+<button  id="next" class="btn btn-success btn-xs"  (click)="next()" [disabled]="(lastPostOnPage >= totalPosts?.countVal)"> next > </button>
+
 
 <ng-template #noPosts>
   <hr>
   <h5>No Posts Yet</h5>
 </ng-template>
+
+</body>

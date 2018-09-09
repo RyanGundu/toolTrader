@@ -1,3 +1,4 @@
+import { Resolve } from '@angular/router';
 import { PostModel } from './post.model';
 import { ProfileModel } from './profile.model';
 import { FirebaseUserModel } from './user.model';
@@ -8,6 +9,8 @@ from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
+import 'rxjs/Rx';
+
 
 @Injectable()
 export class PostService {
@@ -37,6 +40,20 @@ export class PostService {
 
  getCurrentUid() {
   return firebase.auth().currentUser.uid;
+}
+
+getPostCount() {
+  this.count = 0;
+  return this.db.collection('postCount', ref => ref.where('countVal', '>', 0).orderBy('countVal', 'desc')).valueChanges();
+}
+
+
+addToPostCount() {
+
+
+  // this.db.collection('postCount').doc('totalCount').update({
+  //     countVal : Number(countVal) + 1
+  // });
 }
 
   getPosts(value:string) {
@@ -103,8 +120,6 @@ export class PostService {
     this.userInfo = this.userCollection.valueChanges();
     return this.userInfo;
   }
-
-  
 
   createPost(post: PostModel) {
     var userID = firebase.auth().currentUser.uid;
