@@ -29,6 +29,7 @@ import { ScrollableDirective } from './scrollable.directive';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { PaginationService } from './pagination.service';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     UserPostsComponent,
     ScrollableDirective,
     LoadingSpinnerComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

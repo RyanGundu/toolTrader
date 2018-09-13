@@ -10,6 +10,7 @@ export class PostModel {
     phone: string;
     email: string;
     priceNumber: string;
+    postID: string;
 
   constructor(){
     this.postType = "";
@@ -23,5 +24,6 @@ export class PostModel {
     this.phone = "";
     this.email = "";
     this.priceNumber = "";
+    this.postID = "";
   }
 }

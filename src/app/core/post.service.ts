@@ -115,6 +115,12 @@ addToPostCount() {
     return this.userPosts;
   }
 
+  getPost(postID) {
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where("postID", "==", postID));
+    this.userPosts = this.postCollectArray.valueChanges();
+    return this.userPosts;
+  }
+
   getUserInfo() {
     this.userCollection = this.db.collection<ProfileModel>('userProfile', ref => ref.where("uid", "==", this.getCurrentUid()));
     this.userInfo = this.userCollection.valueChanges();
@@ -124,6 +130,7 @@ addToPostCount() {
   createPost(post: PostModel) {
     var userID = firebase.auth().currentUser.uid;
     const id = this.db.createId();
+    const postID = this.db.createId();
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
     this.postCollection.doc(id).set({
       postType: post.postType,
@@ -138,7 +145,8 @@ addToPostCount() {
       email : post.email,
       priceNumber : post.priceNumber,
       uid: userID,
-      datePosted : timestamp
+      datePosted : timestamp,
+      postID: postID
     })
   }
 

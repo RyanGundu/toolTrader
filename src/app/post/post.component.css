@@ -1,0 +1,14 @@
+.small-img-col {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.column {
+    flex: 33.33%;
+    padding: 5px;
+}
+
+img {
+    margin: 2px;
+    border: 1px solid black;
+}
