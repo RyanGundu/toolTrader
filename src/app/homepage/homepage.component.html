@@ -53,7 +53,7 @@
                       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg">
                   </div>
                   <div class="col-md-6  card-body">
-                      <h4><strong><a href="#">{{post.postType}} : {{post.adTitle}}</a></strong></h4>    
+                      <h4><strong><a [routerLink]="['/post', post.postID]">{{post.postType}} : {{post.adTitle}}</a></strong></h4>    
                       <small><i class="icon-calendar"></i> {{post.datePosted.toDate() | date:'MMM-dd-yyyy'}} | <i class="icon-home"></i> {{post.address}}</small>
                       <br><br>
                       <p>{{post.description}}</p>
