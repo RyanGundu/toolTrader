@@ -17,7 +17,7 @@ export class ViewuserComponent implements OnInit {
      this.currentUID = data['uID'];
     })
 
-    this.postService.getUserInfo(this.currentUID).subscribe(data =>{
+    this.postService.getUserInfo(this.currentUID, true).subscribe(data =>{
       console.log(data);
     })
   }

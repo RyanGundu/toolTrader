@@ -18,7 +18,7 @@ export class ProfileUserComponent implements OnInit {
   public imgURL = "http://www.sunshineglobalhospitals.com/xadmin/myaccount/upload/default/profiledefault.png";
 
   constructor(private postService : PostService) { 
-    this.postService.getUserInfo(this.postService.getCurrentUid()).subscribe(userInfo => {
+    this.postService.getUserInfo(this.postService.getCurrentUid(), false).subscribe(userInfo => {
       this.email = userInfo[0].email;
       this.firstName = userInfo[0].firstName;
       this.lastName = userInfo[0].lastName;

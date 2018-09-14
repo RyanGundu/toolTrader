@@ -123,8 +123,8 @@ addToPostCount() {
     return this.userPosts;
   }
 
-  getUserInfo(userinfo:string) {
-    this.userCollection = this.db.collection<ProfileModel>('userProfile', ref => ref.where("username", "==", userinfo));
+  getUserInfo(userinfo:string, flag:boolean) {
+    this.userCollection = this.db.collection<ProfileModel>('userProfile', ref => ref.where(flag ? "username" : "uid", "==", userinfo));
     this.userInfo = this.userCollection.valueChanges();
     return this.userInfo;
   }
