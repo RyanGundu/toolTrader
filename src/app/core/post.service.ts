@@ -47,6 +47,9 @@ getPostCount() {
   return this.db.collection('postCount', ref => ref.where('countVal', '>', 0).orderBy('countVal', 'desc')).valueChanges();
 }
 
+getCurrentUsername() {
+  return this.db.collection('user', ref => ref.where("uid", "==", this.getCurrentUid())).snapshotChanges();
+}
 
 addToPostCount() {
 
@@ -108,7 +111,6 @@ addToPostCount() {
     
   }
 
-
   getUserPosts() {
     this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()).orderBy('datePosted', 'desc'));
     this.userPosts = this.postCollectArray.valueChanges();
@@ -121,8 +123,8 @@ addToPostCount() {
     return this.userPosts;
   }
 
-  getUserInfo() {
-    this.userCollection = this.db.collection<ProfileModel>('userProfile', ref => ref.where("uid", "==", this.getCurrentUid()));
+  getUserInfo(userinfo:string) {
+    this.userCollection = this.db.collection<ProfileModel>('userProfile', ref => ref.where("username", "==", userinfo));
     this.userInfo = this.userCollection.valueChanges();
     return this.userInfo;
   }
@@ -146,7 +148,8 @@ addToPostCount() {
       priceNumber : post.priceNumber,
       uid: userID,
       datePosted : timestamp,
-      postID: postID
+      postID: postID,
+      username: post.username
     })
   }
 

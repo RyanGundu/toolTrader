@@ -11,6 +11,7 @@ export class PostModel {
     email: string;
     priceNumber: string;
     postID: string;
+    username: string;
 
   constructor(){
     this.postType = "";
@@ -25,5 +26,6 @@ export class PostModel {
     this.email = "";
     this.priceNumber = "";
     this.postID = "";
+    this.username ="";
   }
 }

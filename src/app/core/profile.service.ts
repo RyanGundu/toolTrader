@@ -15,7 +15,7 @@ export class ProfileService {
    public afAuth: AngularFireAuth
  ){
   this.userProfileCollection = this.db.collection('userProfile');
-
+  
  }
 
   createUserProfile(userProfile: ProfileModel) {
@@ -28,7 +28,8 @@ export class ProfileService {
         phoneNumber: userProfile.phoneNumber,
         email: userProfile.email,
         uid: userID,
-        imgURL: userProfile.imgURL
+        imgURL: userProfile.imgURL,
+        username: userProfile.username
     })
   }
 

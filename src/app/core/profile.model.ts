@@ -5,6 +5,7 @@ export class ProfileModel {
     phoneNumber: string;
     email: string;
     imgURL: string;
+    username: string;
 
   constructor(){
     this.firstName = "";
@@ -13,6 +14,7 @@ export class ProfileModel {
     this.imgURL = "";
     this.phoneNumber = "";
     this.email = "";
+    this.username = "";
 
   }
 }

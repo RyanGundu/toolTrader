@@ -58,7 +58,7 @@
                       <br><br>
                       <p>{{post.description}}</p>
                     <br><br>
-                    <small><i class="icon-user"></i> by <a href="#">{{post.uid}}</a></small>
+                    <small><i class="icon-user"></i> by <a [routerLink]="['/user', post.username]">{{post.username}}</a></small>
                   </div>
               </div>
 		</div>

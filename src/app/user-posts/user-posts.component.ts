@@ -26,7 +26,6 @@ export class UserPostsComponent implements OnInit {
       this.userPosts = userPosts;
       console.log(this.userPosts);
     });
-    
   }
 
   scrollHandler(e) {

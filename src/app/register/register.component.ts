@@ -28,7 +28,8 @@ export class RegisterComponent implements OnInit {
     address: "",
     phoneNumber: "",
     email: "",
-    imgURL: ""
+    imgURL: "",
+    username: ""
   }
   public isValidUsername = true;
   public errorMessage = "";
@@ -181,6 +182,7 @@ export class RegisterComponent implements OnInit {
     this.profileModel.imgURL = "";
     this.profileModel.phoneNumber = "";
     this.profileModel.address = "";
+    this.profileModel.username = this.registerForm.get('username').value;
   }
 
   setValidUserTrue() {

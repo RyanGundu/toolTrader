@@ -8,6 +8,7 @@ import { UserResolver } from './core/profile-home.resolver';
 import { AuthGuard } from './core/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PostComponent } from './post/post.component';
+import { ViewuserComponent } from './viewuser/viewuser.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', component: HomepageComponent },
@@ -15,6 +16,8 @@ export const rootRouterConfig: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'post-tool', component: PostToolComponent,  resolve: { data: UserResolver}},
-  { path: 'profile-user', component: ProfileUserComponent,  resolve: { data: UserResolver}}
+  { path: 'user/:uID', component: ViewuserComponent },
+  { path: 'profile-user', component: ProfileUserComponent,  resolve: { data: UserResolver}},
+
 ];
 
