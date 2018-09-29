@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import {  PostService } from './../core/post.service';
 import { PostModel } from './../core/post.model';
 
+declare var $:any;
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -34,7 +36,7 @@ export class PostComponent implements OnInit, OnDestroy {
         if (this.post.length > 0) {
           this.adTitle = this.post[0].adTitle;
           this.email = this.post[0].email;
-          this.phone = this.post[0].price;
+          this.phone = this.post[0].phone;
           this.price = this.post[0].price;
           this.address = this.post[0].address;
           this.description = this.post[0].description;
@@ -42,10 +44,21 @@ export class PostComponent implements OnInit, OnDestroy {
       });
 
     });
+
+    $('.thumbs img').click(function(){
+      $('#largeImage').attr('src',$(this).attr('src'));
+      $('#description').html($(this).attr('alt'));
+    });
+
+
   }
+
+  
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
+
 
 }
