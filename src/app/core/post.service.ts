@@ -9,6 +9,7 @@ from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/Rx';
 
 
@@ -38,12 +39,22 @@ export class PostService {
 
  }
 
+ search(term:string) {
+   console.log(term);
+   this.db.collection('post', ref => ref
+      .orderBy("adTitle")
+      .startAt("^(.*?(\\"+term+"\b)[^$]*)$")
+      .limit(5))
+      .valueChanges().subscribe(data => {
+        console.log(data);
+      });
+ }
+
  getCurrentUid() {
   return firebase.auth().currentUser.uid;
 }
 
 getPostCount() {
-  this.count = 0;
   return this.db.collection('postCount', ref => ref.where('countVal', '>', 0).orderBy('countVal', 'desc')).valueChanges();
 }
 
@@ -52,11 +63,15 @@ getCurrentUsername() {
 }
 
 addToPostCount() {
+const sfDocRef = this.db.firestore.collection("postCount").doc("totalCount");
 
+this.db.firestore.runTransaction(transaction => 
+  transaction.get(sfDocRef)
+  .then(sfDoc => {
+    transaction.update(sfDocRef, { countVal: sfDoc.data().countVal + 1 });
+  })).then(() => console.log("Transaction successfully committed!"))
+.catch(error => console.log("Transaction failed: ", error));
 
-  // this.db.collection('postCount').doc('totalCount').update({
-  //     countVal : Number(countVal) + 1
-  // });
 }
 
   getPosts(value:string) {
@@ -111,8 +126,8 @@ addToPostCount() {
     
   }
 
-  getUserPosts() {
-    this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where("uid", "==", this.getCurrentUid()).orderBy('datePosted', 'desc'));
+  getUserPosts(userID: string) {
+    this.postCollectArray = this.db.collection<PostModel>('post', ref => ref.where(userID ? "username" : "uid", "==", userID ? userID : this.getCurrentUid()).orderBy('datePosted', 'desc'));
     this.userPosts = this.postCollectArray.valueChanges();
     return this.userPosts;
   }

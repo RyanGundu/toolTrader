@@ -1,3 +1,64 @@
-<p>
-  viewuser works!
-</p>
+<app-header></app-header>
+<div class="profile-container">
+
+    <div class="profile-header">
+        <div class="profile-info text-center">
+            <img src="{{profileModel?.imgURL}}" class="img-fluid profile-img center-block" alt="Responsive image">
+            <h2 class="user-name">{{profileModel?.firstName}} {{profileModel?.lastName}}</h2>
+            <div class="user-contact center-block">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <a class="bg-primary"><i class="fa fa-map-marker"></i></a>
+                        <p class="details">{{profileModel?.address}}</p>
+                        
+                    </div>
+    
+                    <div class="col-md-4">
+                        <a class="bg-primary"><i class="fa fa-phone"></i></a>
+                        <p class="details">{{profileModel?.phoneNumber}}</p>
+                    </div>
+    
+                    <div class="col-md-4">
+                        <a class="bg-primary"><i class="fa fa-envelope"></i></a><br>
+                        <div><p class="details">{{profileModel?.email}}</p></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-tabs">
+        <main>
+
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1">TOOLS</label>
+                
+            <input id="tab3" type="radio" name="tabs">
+            <label for="tab3">HISTORY</label>
+                
+            <input id="tab4" type="radio" name="tabs">
+            <label for="tab4">RATING</label>
+                
+            <section id="content1">
+                
+                <app-user-posts></app-user-posts>
+                    
+            </section>
+                
+            <section id="content3">
+                <p>
+                OTHER1
+                </p>
+            </section>
+            
+            <section id="content4">
+                <p>
+                OTHER2
+                </p>
+            </section>
+                
+        </main>
+    </div>
+
+</div>

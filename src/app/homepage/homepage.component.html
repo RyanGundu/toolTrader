@@ -34,7 +34,8 @@
       <p id="topText">Displaying all posts</p>
   </div>
   <div id="top">
-    <p id="topText">Showing {{lastPostOnPage - 4}} - {{lastPostOnPage}} of {{totalPosts?.countVal}} results</p>
+    <p id="topText">Showing {{lastPostOnPage - 4}} - {{lastPostOnPage < totalPosts?.countVal ? lastPostOnPage : totalPosts?.countVal}}
+        of {{totalPosts?.countVal}} results</p>
     <div class="form-group">
         <label class="form-name" for="orderBy">Order by</label>
         <select class="form-control">

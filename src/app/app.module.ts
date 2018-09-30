@@ -31,6 +31,7 @@ import { PaginationService } from './pagination.service';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PostComponent } from './post/post.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ViewuserComponent } from './viewuser/viewuser.component';
     LoadingSpinnerComponent,
     SearchBarComponent,
     PostComponent,
-    ViewuserComponent
+    ViewuserComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

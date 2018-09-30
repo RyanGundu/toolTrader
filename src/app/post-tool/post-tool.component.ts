@@ -95,6 +95,7 @@ export class PostToolComponent implements OnInit {
     if (this.validPosting()) {
       this.postService.createPost(this.postModel);
       this.postForm.reset();
+      this.postService.addToPostCount();
       this.isSuccess = true;
     } else {
       this.isError = true;

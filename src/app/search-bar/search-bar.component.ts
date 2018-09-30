@@ -1,3 +1,5 @@
+import { PostService } from './../core/post.service';
+import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  searchVal: string;
+  constructor(private postService:PostService) { }
 
   ngOnInit() {
+
+  }
+
+  searchClicked() {
+    this.postService.search(this.searchVal);
   }
 
 }

@@ -1,3 +1,4 @@
+import { ProfileModel } from './../core/profile.model';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from './../core/post.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ViewuserComponent implements OnInit {
 
   currentUID:string = '';
+  profileModel: ProfileModel;
   constructor(private activatedRoute:ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
@@ -18,8 +20,9 @@ export class ViewuserComponent implements OnInit {
     })
 
     this.postService.getUserInfo(this.currentUID, true).subscribe(data =>{
-      console.log(data);
-    })
+     this.profileModel = data['0'];
+     console.log(this.profileModel);
+    });
   }
 
 }
