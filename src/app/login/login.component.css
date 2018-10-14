@@ -4,11 +4,27 @@
     /*background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
     /*background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     /* background: linear-gradient(to bottom, #005AA7, #33a0ff); */
-    background: url("https://static1.squarespace.com/static/538f7733e4b08673a3842c60/t/539ba52ce4b005a2325a9c42/1402709294904/tools_sm.jpg?format=1500w");
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://static1.squarespace.com/static/538f7733e4b08673a3842c60/t/539ba52ce4b005a2325a9c42/1402709294904/tools_sm.jpg?format=1500w');
+    /* opacity: 0.9; */
     background-size: cover;
     padding: 50px;
     height: 91vh;
+
+
 }
+.login-block:after {
+    content: "";
+    background: linear-gradient(
+        rgba(20,0,0, .15), 
+        rgba(20,0,0, .15));
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 
 .login-sec{padding: 50px 30px; position:relative;background-color: #fff; max-width: 400px;margin: auto;}
 .login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: black;}
