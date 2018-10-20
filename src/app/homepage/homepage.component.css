@@ -1,38 +1,37 @@
 img{width:100%}
 
-body {
-    width: 100%;
-    height: 100%;
-    background-color: #f9f9f9;
+.side-panel {
+    min-width: 300px;
 }
 
-.container {
-        border: 1px solid #e4e6e8;
-        border-bottom: white;
-    margin-right: 50px;
-    width: 900px;
-    background-color: white;
-    margin-top: -308px;
+.top-sticky {
+    position: sticky;
+    top: 0;
+}
 
+@media only screen and (max-width: 991px) {
+    .top-sticky {
+        position: static;
+    }
+}
+
+.postings {
+    border: 1px solid #e4e6e8;
+    border-bottom: white;
 }
 
 .card {
-    margin-left: -15px;
-    margin-right: -15px;
     border-bottom: 1px solid #e4e6e8;
     margin-top: 5px;
     background-color: white;
-
 }
+
 p {
    font-size: 20px;
 }
 
 #top {
-    margin-left: -15px;
-    margin-right: -15px;
     border-bottom: 1px solid #e4e6e8;
-    display: flex;
 }
 
 #topText {
@@ -40,9 +39,24 @@ p {
     margin-top: 5px;
     font-size: 15px
 }
+.form-group {
+    list-style: none;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.form-group li{
+    display: inline-block;
+}
+.form-control {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 110px;
+}
+
 
 #prev {
-    margin-left: 680px;
+    /* margin-left: 680px; */
     margin-top: 40px;
     margin-bottom: 40px;
     width: 120px;
@@ -62,27 +76,5 @@ p {
     height: 30px;
 }
 
-.form-group {
-    width: 50px;
-    flex-grow: 1;
-    display: flex;
-}
-
-.form-name {
-    margin-left: 490px;
-    margin-top: 17px;
-    margin-right: 12px;
-}
-.form-control {
-    margin-top: 10px;
-    width: 110px;
-}
-
-.outer {
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
 
 

@@ -13,6 +13,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   resetPassword = false;
   isEmail = true;
+
+  public errorMessage = "";
+  public isError = false;
+  public isLoading = false;
   
   constructor(
     public authService: AuthService,
@@ -53,13 +57,23 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  tryLogin(value){
+  tryLogin(value){ //fired on login click
+    this.isLoading = true;
+    this.isError = false;
+    if (value.email.length <= 0 || value.password.length <= 0) {
+      this.errorMessage = "All fields are required";
+      this.isError = true;
+      this.isLoading = false;
+      return;
+    }
     this.authService.doLogin(value)
     .then(res => {
       this.router.navigate(['/']);
     }, err => {
-      console.log(err);
-      // this.errorMessage = err.message;
+      console.log(err); 
+      this.errorMessage = err.message;
+      this.isLoading = false;
+      this.isError = true;
     })
   }
 

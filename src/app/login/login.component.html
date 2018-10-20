@@ -1,79 +1,68 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <app-header></app-header>
 <div class="login-block">
-  <div class="container">
-    <div class="row">
 
-      <div class=""></div>
+  <div class="login-content">
+    <h1 class="text-center">WELCOME TO TOOL TRADER!</h1>
+    <p class="text-center">GET TOOLS FASTER CHEAPER AND NEARBY!</p>
+  </div>
 
-      <div class="">
+  <div class="login-sec">
+    <h2 class="text-center">Login Now</h2>
+    <div class="alert alert-danger" *ngIf="isError">{{errorMessage}}</div>
+    <form [formGroup]="loginForm" class="login-form">
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+        <input type="password" formControlName="password" class="form-control" placeholder="">
+      </div>
 
-        <div class="login-content">
-          <h1 class="text-center">WELCOME TO TOOL TRADER!</h1>
-          <p class="text-center">GET TOOLS FASTER CHEAPER AND NEARBY!</p>
+      <div class="form-check" *ngIf="!isLoading">
+        <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-login float-right">Login</button>
+        <button class="btn btn-register float-right" routerLink="/register">Register</button>
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input">
+          <small>Remember Me</small>
+        </label>
+      </div>
+      <div *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></div>
+      <a href="" data-toggle="modal" data-target="#exampleModal" data-whatever="example@mail.ca"><small>Forgot Password?</small></a>
+    </form>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Password Reset</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-
-        <div class="login-sec">
-          <h2 class="text-center">Login Now</h2>
-
-          <form [formGroup]="loginForm" class="login-form">
+        <div class="modal-body">
+          <form>
+            <small>An email will be sent to the following email adress.
+              (Note: An account must have already been activated with the provided email)
+            </small>
             <div class="form-group">
-              <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-              <input type="text" formControlName="email" class="form-control" placeholder="">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input #emailReset type="text" class="form-control" id="recipient-name" (keyup)='setIsEmailTrue()'>
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-              <input type="password" formControlName="password" class="form-control" placeholder="">
-            </div>
-
-            <div class="form-check">
-                <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-login float-right">Login</button>
-              <button class="btn btn-register float-right" routerLink="/register">Register</button>
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">
-                <small>Remember Me</small>
-              </label>
-            </div>
-            <a href="" data-toggle="modal" data-target="#exampleModal" data-whatever="example@mail.ca"><small>Forgot Password?</small></a>
           </form>
+          <div class="alert alert-success" *ngIf="resetPassword">An Email has been sent!</div>
+          <div class="alert alert-danger" *ngIf="!isEmail">Invalid email format</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="sendResetEmail(emailReset.value)">Reset Password</button>
         </div>
       </div>
-      <div class=""></div>
-
-      
-      <!-- MODAL -->
-      <div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Password Reset</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <small>An email will be sent to the following email adress.
-                  (Note: An account must have already been activated with the provided email)
-                </small>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Email:</label>
-                  <input #emailReset type="text" class="form-control" id="recipient-name" (keyup)='setIsEmailTrue()'>
-                </div>
-              </form>
-              <div class="alert alert-success" *ngIf="resetPassword">An Email has been sent!</div>
-              <div class="alert alert-danger" *ngIf="!isEmail">Invalid email format</div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" (click)="sendResetEmail(emailReset.value)">Reset Password</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- MODAL END -->
-
     </div>
   </div>
+  <!-- MODAL END -->
   
 </div>
 
