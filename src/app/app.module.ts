@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { environment } from '../environments/environment';
 import { UserResolver } from './core/profile-home.resolver';
@@ -32,6 +33,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PostComponent } from './post/post.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { DropZoneDirective } from './drop-zone.directive';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     SearchBarComponent,
     PostComponent,
     ViewuserComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    DropZoneDirective,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireStorageModule
   ],
   providers: [AuthService, UserService, PostService, ProfileService ,UserResolver, AuthGuard, PaginationService],
   bootstrap: [AppComponent]
