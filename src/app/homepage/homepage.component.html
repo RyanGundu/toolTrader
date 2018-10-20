@@ -11,68 +11,73 @@
 
 
 <!-- Include the above in your HEAD tag -->
-<body>
-  <br><br>
-  <div class="outer">
-      <div class="row">
-          <div class="col-md-3">
-              <p class="lead">Categories</p>
-                  <div class="list-group">
-                          <a  class="list-group-item welcome active" href="#">Category 1</a>
-                          <a  class="list-group-item home" href="#">Category 2</a>
-                          <a  class="list-group-item reports" href="#">Category 3</a>
-                          <a  class="list-group-item settings" href="#">Category 4</a>
-                          <a  class="list-group-item settings" href="#">Category 5</a>
-                          <a  class="list-group-item settings" href="#">Category 6</a>
-                          <a  class="list-group-item settings" href="#">Category 7</a>
-                  </div>  
-          </div>
-          </div>
-          </div>
-<div class="container" *ngIf="posts?.length > 0;else noPosts">
-  <div id="top"> 
-      <p id="topText">Displaying all posts</p>
-  </div>
-  <div id="top">
-    <p id="topText">Showing {{lastPostOnPage - 4}} - {{lastPostOnPage < totalPosts?.countVal ? lastPostOnPage : totalPosts?.countVal}}
-        of {{totalPosts?.countVal}} results</p>
-    <div class="form-group">
-        <label class="form-name" for="orderBy">Order by</label>
-        <select class="form-control">
-        <option>Newst First</option>
-        <option>Oldest First</option>
-        <option>Lowest Price</option>
-        <option>Highest Price</option>
-        </select>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 top-sticky">
+            <div class="side-panel">
+                <p class="lead">Categories</p>
+                <div class="list-group">
+                    <a  class="list-group-item welcome active" href="#">Category 1</a>
+                    <a  class="list-group-item home" href="#">Category 2</a>
+                    <a  class="list-group-item reports" href="#">Category 3</a>
+                    <a  class="list-group-item settings" href="#">Category 4</a>
+                    <a  class="list-group-item settings" href="#">Category 5</a>
+                    <a  class="list-group-item settings" href="#">Category 6</a>
+                    <a  class="list-group-item settings" href="#">Category 7</a>
+                </div>  
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="postings" *ngIf="posts?.length > 0;else noPosts">
+                <div id="top"> 
+                    <p id="topText">Displaying all posts</p>
+                </div>
+                <div id="top">
+                    <p id="topText">Showing {{lastPostOnPage - 4}} - {{lastPostOnPage < totalPosts?.countVal ? lastPostOnPage : totalPosts?.countVal}} of {{totalPosts?.countVal}} results</p>
+                    
+                    <ul class="form-group">
+                        <li><label class="form-name">Order by</label></li>
+                        <li>
+                            <select class="form-control">
+                            <option>Newst First</option>
+                            <option>Oldest First</option>
+                            <option>Lowest Price</option>
+                            <option>Highest Price</option>
+                            </select>
+                        </li>
+                    </ul>
+                        
+                
+                </div>
+                <div class="row"  *ngFor="let post of posts">
+                    <div class="col-md-12">
+                        <div class="card bg-light mb-3">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img style="max-width:202px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg">
+                            </div>
+                            <div class="col-md-6  card-body">
+                                <h4><strong><a [routerLink]="['/post', post.postID]">{{post.postType}} : {{post.adTitle}}</a></strong></h4>    
+                                <small><i class="icon-calendar"></i> {{post.datePosted.toDate() | date:'MMM-dd-yyyy'}} | <i class="icon-home"></i> {{post.address}}</small>
+                                <br><br>
+                                <p>{{post.description}}</p>
+                                <br><br>
+                                <small><i class="icon-user"></i> by <a [routerLink]="['/user', post.username]">{{post.username}}</a></small>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div> 
+                <button id="prev" class="btn btn-success btn-xs" (click)="previous()" [disabled]="!(pgCount > 0)"> < prev</button>
+                <button  id="next" class="btn btn-success btn-xs"  (click)="next()" [disabled]="(lastPostOnPage >= totalPosts?.countVal)"> next > </button>
+            </div>
+        </div>
     </div>
-  </div>
-	<div class="row"  *ngFor="let post of posts">
-		<div class="col-md-12">
-		    <div class="card bg-light mb-3">
-              <div class="row">
-                  <div class="col-md-3">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg">
-                  </div>
-                  <div class="col-md-6  card-body">
-                      <h4><strong><a [routerLink]="['/post', post.postID]">{{post.postType}} : {{post.adTitle}}</a></strong></h4>    
-                      <small><i class="icon-calendar"></i> {{post.datePosted.toDate() | date:'MMM-dd-yyyy'}} | <i class="icon-home"></i> {{post.address}}</small>
-                      <br><br>
-                      <p>{{post.description}}</p>
-                    <br><br>
-                    <small><i class="icon-user"></i> by <a [routerLink]="['/user', post.username]">{{post.username}}</a></small>
-                  </div>
-              </div>
-		</div>
-	</div>
-</div> 
 </div>
-
-<button id="prev" class="btn btn-success btn-xs" (click)="previous()" [disabled]="!(pgCount > 0)"> < prev</button>
-<button  id="next" class="btn btn-success btn-xs"  (click)="next()" [disabled]="(lastPostOnPage >= totalPosts?.countVal)"> next > </button>
+    
 
 
 <ng-template #noPosts>
   <hr>
   <h5>No Posts Yet</h5>
 </ng-template>
-</body>
