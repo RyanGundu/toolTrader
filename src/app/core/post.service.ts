@@ -144,7 +144,7 @@ this.db.firestore.runTransaction(transaction =>
     return this.userInfo;
   }
 
-  createPost(post: PostModel) {
+  createPost(post: PostModel, urls: String[]) {
     var userID = firebase.auth().currentUser.uid;
     const id = this.db.createId();
     const postID = this.db.createId();
@@ -164,7 +164,8 @@ this.db.firestore.runTransaction(transaction =>
       uid: userID,
       datePosted : timestamp,
       postID: postID,
-      username: post.username
+      username: post.username,
+      urlArray: urls
     })
   }
 

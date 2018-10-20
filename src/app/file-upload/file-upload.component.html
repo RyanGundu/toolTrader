@@ -4,45 +4,16 @@
      (dropped)="startUpload($event)"
      [class.hovering]="isHovering">
 
-     <h3>AngularFire Drop Zone</h3>
-
      <div class="file">
         <label class="file-label">
-
-
         <input class="file-input" type="file" (change)="startUpload($event.target.files)">
-
-
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fa fa-upload"></i>
-            </span>
-            <span class="file-label">
-              or choose a file…
-            </span>
-          </span>
         </label>
       </div>
 </div>
 
-<div *ngIf="percentage | async as pct">
-
-  <progress class="progress is-info" 
-            [value]="pct" 
-            max="100">        
-  </progress>
-
-  {{ pct | number }}%
-
-</div>
-
 <div *ngIf="snapshot | async as snap">
-
-  <div *ngIf="downloadURL | async as url">
-    <h3>Results!</h3>
-    <img [src]="url"><br>
-    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
-  </div> 
-
+  <div *ngIf="show">
+      <img class="images" *ngFor="let url of fileUploadUrl" [src]="url" />
+  </div>
 </div>
 

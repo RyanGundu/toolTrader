@@ -1,4 +1,3 @@
-import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Component, OnInit } from '@angular/core';
@@ -21,8 +20,11 @@ snapshot: Observable<any>;
 downloadURL: Observable<string>;
 
 url: string;
+show: boolean = false;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+fileUploadUrl: string[] = [];
+
+  constructor(private storage: AngularFireStorage) { }
 
   ngOnInit() {
   }
@@ -44,13 +46,18 @@ url: string;
     // The main task
     this.task = this.storage.upload(path, file, { customMetadata })
 
+    
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(
       tap(snap => {
         if (snap.bytesTransferred === snap.totalBytes) {
-          // Update firestore on completion
-          this.db.collection('photos').add( { path, size: snap.totalBytes })
+          snap.ref.getDownloadURL().then(downloadURL => {
+           this.url = downloadURL;
+           this.fileUploadUrl.push(downloadURL);
+           this.show = true;
+          });
+          //this.db.collection('photos').add( { path, size: snap.totalBytes })
         }
       })
     );

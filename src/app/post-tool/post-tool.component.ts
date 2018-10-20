@@ -1,7 +1,8 @@
+import { FileUploadComponent } from './../file-upload/file-upload.component';
 import { PostService } from './../core/post.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostModel } from './../core/post.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
@@ -9,9 +10,11 @@ import { AngularFirestore } from 'angularfire2/firestore';
   templateUrl: './post-tool.component.html',
   styleUrls: ['./post-tool.component.css']
 })
-export class PostToolComponent implements OnInit {
+export class PostToolComponent implements OnInit, AfterViewInit {
   postForm: FormGroup;
   username: string;
+
+  @ViewChild(FileUploadComponent) fileUploadComponent;
 
   postModel: PostModel = {
     postType : '',
@@ -46,6 +49,9 @@ export class PostToolComponent implements OnInit {
     this.postService.getCurrentUsername().subscribe(data => {
      this.username = data['0'].payload.doc.id;
     });
+  }
+
+  ngAfterViewInit() {
   }
 
   createForm() {
@@ -93,10 +99,12 @@ export class PostToolComponent implements OnInit {
     this.isError = false;
     this.updatePostModel();
     if (this.validPosting()) {
-      this.postService.createPost(this.postModel);
+      this.postService.createPost(this.postModel, 
+        this.fileUploadComponent.fileUploadUrl);
       this.postForm.reset();
       this.postService.addToPostCount();
       this.isSuccess = true;
+      this.fileUploadComponent.fileUploadUrl = [];
     } else {
       this.isError = true;
     }
