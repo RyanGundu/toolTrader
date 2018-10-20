@@ -9,6 +9,12 @@ img{width:100%}
     top: 0;
 }
 
+@media only screen and (max-width: 991px) {
+    .top-sticky {
+        position: static;
+    }
+}
+
 .postings {
     border: 1px solid #e4e6e8;
     border-bottom: white;
