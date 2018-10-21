@@ -9,7 +9,7 @@
     	<div class="input-group">
 			<input type="text"  [(ngModel)]="searchVal" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
 			<div class="input-group-btn">
-				<button class="btn btn-default" (click)="searchClicked()" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				<button [disabled]="!searchVal" class="btn btn-default" [routerLink]="['/search-result', searchVal]" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			</div>
 		</div>
 		</form>

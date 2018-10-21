@@ -19,6 +19,6 @@ export const rootRouterConfig: Routes = [
   { path: 'post-tool', component: PostToolComponent,  resolve: { data: UserResolver}},
   { path: 'user/:uID', component: ViewuserComponent },
   { path: 'profile-user', component: ProfileUserComponent,  resolve: { data: UserResolver}},
-  { path: 'search-result', component: SearchResultsComponent }
+  { path: 'search-result/:searchVal', component: SearchResultsComponent }
 ];
 

@@ -1,3 +1,6 @@
+import { PostModel } from './../core/post.model';
+import { PostService } from './../core/post.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultsComponent implements OnInit {
 
-  constructor() { }
+  posts: PostModel[];
+  totalPosts: number;
 
+  constructor(private activatedRoute: ActivatedRoute, private postService: PostService,
+    private router: Router) {
+   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
+  
   ngOnInit() {
+    var searchVal = this.activatedRoute.snapshot.paramMap.get('searchVal');
+    this.postService.search(searchVal).subscribe(posts => {
+      this.posts = posts;
+      this.totalPosts = this.posts.length;
+    });
   }
 
 }

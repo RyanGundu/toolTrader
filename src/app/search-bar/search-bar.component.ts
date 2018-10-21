@@ -16,11 +16,4 @@ export class SearchBarComponent implements OnInit {
 
   }
 
-  searchClicked() {
-    console.log(this.searchVal);
-    this.postService.search(this.searchVal).subscribe(post => {
-      console.log(post);
-    });
-  }
-
 }
