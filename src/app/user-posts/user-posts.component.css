@@ -5,4 +5,24 @@
 
 .card {
     margin-bottom: 10px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.imgPanel {
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+    border: 1px solid #cecece;
+}
+
+.fillwidth {
+    min-width: 100%;
+    height: auto;
+}
+
+.fillheight {
+    min-height: 100%; 
+    width: auto;
 }

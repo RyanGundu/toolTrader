@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostModel } from './../core/post.model';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-tool',
@@ -29,7 +30,8 @@ export class PostToolComponent implements OnInit, AfterViewInit {
     email : '',
     priceNumber: '',
     postID: '',
-    username: ''
+    username: '',
+    urlArray: []
   }
 
   public errorMessage = "";
@@ -39,8 +41,9 @@ export class PostToolComponent implements OnInit, AfterViewInit {
 
   constructor(
     public db: AngularFirestore,
+    private router: Router,
     public postService : PostService,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {
     this.createForm();
    }
@@ -99,12 +102,13 @@ export class PostToolComponent implements OnInit, AfterViewInit {
     this.isError = false;
     this.updatePostModel();
     if (this.validPosting()) {
-      this.postService.createPost(this.postModel, 
-        this.fileUploadComponent.fileUploadUrl);
+      this.postModel.urlArray = this.fileUploadComponent.fileUploadUrl;
+      this.postService.createPost(this.postModel);
       this.postForm.reset();
       this.postService.addToPostCount();
       this.isSuccess = true;
       this.fileUploadComponent.fileUploadUrl = [];
+      // window.location.reload();
     } else {
       this.isError = true;
     }

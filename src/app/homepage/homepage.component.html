@@ -51,8 +51,9 @@
                     <div class="col-md-12">
                         <div class="card bg-light mb-3">
                         <div class="row">
-                            <div class="col-md-3">
-                                <img style="max-width:202px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg">
+                            <div class="col-md-3 postImg">
+                                <img *ngIf="post.urlArray?.length > 0; else noImg" class="fillwidth" src="{{post.urlArray[0]}}">
+                                <ng-template #noImg><img class="card-img-bottom fillwidth" src="https://agsci-colostate.nbsstore.net/content/images/thumbs/default-image_450.png" alt="Card image"></ng-template>
                             </div>
                             <div class="col-md-6  card-body">
                                 <h4><strong><a [routerLink]="['/post', post.postID]">{{post.postType}} : {{post.adTitle}}</a></strong></h4>    

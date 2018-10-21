@@ -4,7 +4,11 @@
     <div  *ngFor="let post of userPosts">
       <div class="col-lg-3 col-md-4 col-sm-8">
         <div class="card" style="width:100%; max-width: 300px;">
-          <img class="card-img-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Claw-hammer.jpg/1200px-Claw-hammer.jpg" alt="Card image" style="width:100%">
+          <div class="imgPanel">
+            <img *ngIf="post.urlArray?.length > 0; else noImg" class="card-img-bottom postImg fillwidth" src="{{post.urlArray[0]}}" alt="Card image" style="width:100%">
+            <ng-template #noImg><img class="card-img-bottom postImg fillwidth" src="https://agsci-colostate.nbsstore.net/content/images/thumbs/default-image_450.png" alt="Card image" style="width:100%"></ng-template>
+          </div>
+          <hr>
           <div class="card-body">
             <h4 class="card-title">{{post.adTitle}}</h4>
             <p class="card-text" style="color: rgb(134, 191, 134)">{{post.price}}</p>
