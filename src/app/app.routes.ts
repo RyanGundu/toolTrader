@@ -9,6 +9,7 @@ import { AuthGuard } from './core/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PostComponent } from './post/post.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', component: HomepageComponent },
@@ -18,6 +19,6 @@ export const rootRouterConfig: Routes = [
   { path: 'post-tool', component: PostToolComponent,  resolve: { data: UserResolver}},
   { path: 'user/:uID', component: ViewuserComponent },
   { path: 'profile-user', component: ProfileUserComponent,  resolve: { data: UserResolver}},
-
+  { path: 'search-result', component: SearchResultsComponent }
 ];
 

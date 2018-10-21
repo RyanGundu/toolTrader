@@ -36,18 +36,21 @@ export class PostService {
   this.lastVisible = "0";
   this.firstVisible.push("0");
   this.flag = false;
-
  }
 
  search(term:string) {
-   console.log(term);
-   this.db.collection('post', ref => ref
-      .orderBy("adTitle")
-      .startAt("^(.*?(\\"+term+"\b)[^$]*)$")
-      .limit(5))
-      .valueChanges().subscribe(data => {
-        console.log(data);
-      });
+  this.postCollectArray = this.db.collection<PostModel>('post', ref => {
+    ref.orderBy('datePosted', 'desc').get().then( (documentSnapshots) => {
+      // Get the last visible document
+      this.lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+      // console.log('last', this.lastVisible);
+    });
+    return ref.orderBy('datePosted', 'desc');
+  }); //
+  this.posts = this.postCollectArray.valueChanges();
+  return  this.posts.map(items => 
+    items.filter(item => (item.description.includes(term) ||
+    item.adTitle.includes(term))));
  }
 
  getCurrentUid() {
