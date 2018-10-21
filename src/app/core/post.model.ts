@@ -12,6 +12,7 @@ export class PostModel {
     priceNumber: string;
     postID: string;
     username: string;
+    urlArray: string[];
 
   constructor(){
     this.postType = "";
@@ -27,5 +28,6 @@ export class PostModel {
     this.priceNumber = "";
     this.postID = "";
     this.username ="";
+    this.urlArray = [];
   }
 }
